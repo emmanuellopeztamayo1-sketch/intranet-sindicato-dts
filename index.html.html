@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intranet Socios — Sindicato DTS</title>
+  <style>
+    :root {
+      --verde: #2c8c1a;
+      --verde-oscuro: #1f6812;
+      --verde-suave: #eef7ec;
+      --negro: #1a1d1f;
+      --gris-azulado: #6f7d8c;
+      --fondo: #f4f6f8;
+      --blanco: #ffffff;
+      --borde: #dce2e8;
+      --texto: #222629;
+      --texto-muted: #5c6670;
+      --alerta: #b45309;
+      --alerta-fondo: #fef3c7;
+      --sombra: 0 8px 24px rgba(26, 29, 31, 0.07);
+      --radio: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ---------- LOGIN ---------- */
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(160deg, var(--blanco) 0%, #e9eff4 100%);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-top: 5px solid var(--verde);
+      border-radius: var(--radio);
+      padding: 32px 28px;
+      box-shadow: var(--sombra);
+    }
+
+    .brand-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo-img {
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .logo-fallback {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      border: 6px solid var(--gris-azulado);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--negro);
+      background: var(--blanco);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--negro);
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.88rem;
+      color: var(--gris-azulado);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--negro);
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 11px 13px;
+      font-size: 0.96rem;
+      border: 1.5px solid var(--borde);
+      border-radius: 8px;
+      color: var(--negro);
+      background: var(--blanco);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(44, 140, 26, 0.14);
+    }
+
+    .help-text {
+      font-size: 0.78rem;
+      color: var(--texto-muted);
+      margin-top: 5px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--verde);
+      color: var(--blanco);
+      font-size: 0.98rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--verde-oscuro);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .status-note {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--texto-muted);
+      text-align: center;
+    }
+
+    .error-msg {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    /* ---------- PORTAL ---------- */
+    .portal {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: var(--negro);
+      color: var(--blanco);
+      border-bottom: 4px solid var(--verde);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .topbar-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--blanco);
+      padding: 3px;
+      object-fit: contain;
+    }
+
+    .topbar-name {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .topbar-tag {
+      font-size: 0.76rem;
+      color: #cbd5e1;
+    }
+
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .rut-badge {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .btn-secondary,
+    .btn-logout {
+      background: transparent;
+      color: var(--blanco);
+      border: 1px solid var(--gris-azulado);
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover,
+    .btn-logout:hover {
+      border-color: var(--blanco);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--borde);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--borde);
+      background: var(--blanco);
+      color: var(--negro);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active {
+      background: var(--verde);
+      border-color: var(--verde);
+      color: var(--blanco);
+    }
+
+    .section-panel {
+      display: none;
+    }
+
+    .section-panel.active {
+      display: block;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--negro);
+      border-left: 4px solid var(--verde);
+      padding-left: 10px;
+    }
+
+    .sync-info {
+      font-size: 0.8rem;
+      color: var(--texto-muted);
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid var(--borde);
+      background: var(--blanco);
+      color: var(--texto-muted);
+      cursor: pointer;
+    }
+
+    .filter-chip.active {
+      background: var(--negro);
+      color: var(--blanco);
+      border-color: var(--negro);
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(26, 29, 31, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--texto-muted);
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.74rem;
+      background: var(--verde-suave);
+      color: var(--verde-oscuro);
+    }
+
+    .badge.urgente {
+      background: var(--alerta-fondo);
+      color: var(--alerta);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--negro);
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 0.92rem;
+      color: var(--texto);
+      white-space: pre-line;
+    }
+
+    /* ---------- ASAMBLEAS ---------- */
+    .assembly-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .assembly-card {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-left: 5px solid var(--gris-azulado);
+      border-radius: var(--radio);
+      padding: 22px;
+      box-shadow: 0 2px 10px rgba(26, 29, 31, 0.04);
+    }
+
+    .assembly-card.destacada {
+      border-left-color: var(--verde);
+    }
+
+    .assembly-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .assembly-date {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--gris-azulado);
+    }
+
+    .key-points-box {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: var(--verde-suave);
+      border: 1px solid #cde4c8;
+      border-radius: 9px;
+    }
+
+    .key-points-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--verde-oscuro);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+    }
+
+    .key-points-list {
+      padding-left: 18px;
+      font-size: 0.92rem;
+      color: var(--negro);
+    }
+
+    .key-points-list li {
+      margin-bottom: 5px;
+    }
+
+    .doc-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--verde-oscuro);
+      text-decoration: none;
+    }
+
+    .doc-link:hover {
+      text-decoration: underline;
+    }
+
+    .empty-state {
+      background: var(--blanco);
+      border: 1px dashed var(--borde);
+      border-radius: var(--radio);
+      padding: 24px;
+      text-align: center;
+      color: var(--texto-muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 600px) {
+      .login-card {
+        padding: 24px 20px;
+      }
+      .topbar-user {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA DE ACCESO -->
+  <section id="loginScreen" class="login-wrapper">
+    <div class="login-card">
+      <div class="brand-box">
+        <img
+          src="logo-dts.png"
+          alt="Logo Sindicato DTS"
+          class="logo-img"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';"
+        />
+        <div id="logoFallback" class="logo-fallback">DTS</div>
+        <div class="brand-title">SINDICATO DTS</div>
+        <div class="brand-subtitle">Portal Institucional de Socios</div>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="rutInput">RUT (sin puntos y con guion)</label>
+          <input
+            type="text"
+            id="rutInput"
+            placeholder="Ej: 20951867-8"
+            autocomplete="username"
+            required
+          />
+          <div class="help-text">Formato requerido: 12345678-9</div>
+        </div>
+
+        <div class="form-group">
+          <label for="passInput">Clave (primeros 5 dígitos del RUT)</label>
+          <input
+            type="password"
+            id="passInput"
+            placeholder="Ej: 20951"
+            maxlength="5"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <button id="loginBtn" type="submit" class="btn-primary">Ingresar al portal</button>
+        <div id="statusNote" class="status-note">Conectando con nómina de socios...</div>
+        <div id="errorMsg" class="error-msg"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- PORTAL DE SOCIOS -->
+  <main id="portalScreen" class="portal">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-brand">
+          <img
+            src="logo-dts.png"
+            alt="Sindicato DTS"
+            class="topbar-logo"
+            onerror="this.style.display='none';"
+          />
+          <div>
+            <div class="topbar-name">SINDICATO DTS</div>
+            <div class="topbar-tag">Comunicación oficial y acuerdos sindicales</div>
+          </div>
+        </div>
+
+        <div class="topbar-user">
+          <span id="socioBadge" class="rut-badge">Socio</span>
+          <button id="refreshBtn" type="button" class="btn-secondary">Actualizar datos</button>
+          <button id="logoutBtn" type="button" class="btn-logout">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <nav class="nav-tabs" aria-label="Secciones de la intranet">
+        <button type="button" class="tab-btn active" data-tab="avisos">Avisos</button>
+        <button type="button" class="tab-btn" data-tab="asambleas">Asambleas y Puntos Clave</button>
+        <button type="button" class="tab-btn" data-tab="documentos">Documentos (Drive)</button>
+      </nav>
+
+      <!-- SECCIÓN AVISOS -->
+      <section id="tab-avisos" class="section-panel active">
+        <div class="section-header">
+          <h1 class="section-title">Avisos y Comunicados</h1>
+          <span id="syncStatusAvisos" class="sync-info"></span>
+        </div>
+        <div id="filtersContainer" class="filters"></div>
+        <div id="avisosGrid" class="grid-cards"></div>
+      </section>
+
+      <!-- SECCIÓN ASAMBLEAS -->
+      <section id="tab-asambleas" class="section-panel">
+        <div class="section-header">
+          <h1 class="section-title">Asambleas y Puntos Clave</h1>
+          <span id="syncStatusAsambleas" class="sync-info"></span>
+        </div>
+        <div id="asambleasList" class="assembly-list"></div>
+      </section>
+
+      <!-- SECCIÓN DOCUMENTOS -->
+      <section id="tab-documentos" class="section-panel">
+        <div class="section-header">
+          <h1 class="section-title">Documentos Oficiales</h1>
+          <span id="syncStatusDocumentos" class="sync-info"></span>
+        </div>
+        <div id="documentosGrid" class="grid-cards"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const SHEET_URLS = {
+      socios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=1706204470&single=true&output=csv",
+      avisos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=1742449835&single=true&output=csv",
+      asambleas: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=580746273&single=true&output=csv",
+      documentos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=330399263&single=true&output=csv"
+    };
+
+    let sociosCargados = [];
+    let portalData = {
+      avisos: [],
+      asambleas: [],
+      documentos: []
+    };
+    let categoriaActiva = "Todos";
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        const next = text[i + 1];
+
+        if (inQuotes) {
+          if (ch === '"' && next === '"') {
+            field += '"';
+            i++;
+          } else if (ch === '"') {
+            inQuotes = false;
+          } else {
+            field += ch;
+          }
+        } else {
+          if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ",") {
+            row.push(field.trim());
+            field = "";
+          } else if (ch === "\r" && next === "\n") {
+            row.push(field.trim());
+            rows.push(row);
+            row = [];
+            field = "";
+            i++;
+          } else if (ch === "\n" || ch === "\r") {
+            row.push(field.trim());
+            rows.push(row);
+            row = [];
+            field = "";
+          } else {
+            field += ch;
+          }
+        }
+      }
+
+      if (field.length > 0 || row.length > 0) {
+        row.push(field.trim());
+        rows.push(row);
+      }
+
+      if (rows.length < 2) return [];
+      const headers = rows[0].map((h) => h.replace(/^\uFEFF/, "").trim());
+      return rows
+        .slice(1)
+        .filter((r) => r.some((cell) => cell !== ""))
+        .map((r) => {
+          const obj = {};
+          headers.forEach((h, idx) => {
+            obj[h] = (r[idx] || "").trim();
+          });
+          return obj;
+        });
+    }
+
+    async function fetchSheetCSV(url) {
+      const bustCacheUrl = `${url}${url.includes("?") ? "&" : "?"}_t=${Date.now()}`;
+      const res = await fetch(bustCacheUrl, { cache: "no-store" });
+      if (!res.ok) {
+        throw new Error(`Error HTTP ${res.status}`);
+      }
+      const csvText = await res.text();
+      return parseCSV(csvText);
+    }
+
+    function normalizarRut(valor) {
+      return (valor || "")
+        .replace(/\./g, "")
+        .replace(/\s+/g, "")
+        .toUpperCase()
+        .trim();
+    }
+
+    function validarFormatoRutConGuion(rut) {
+      return /^[0-9]{7,8}-[0-9K]$/.test(rut);
+    }
+
+    function obtenerPrimerosCincoDigitos(rut) {
+      const cuerpo = rut.split("-")[0] || "";
+      return cuerpo.slice(0, 5);
+    }
+
+    const loginScreen = document.getElementById("loginScreen");
+    const portalScreen = document.getElementById("portalScreen");
+    const loginForm = document.getElementById("loginForm");
+    const loginBtn = document.getElementById("loginBtn");
+    const rutInput = document.getElementById("rutInput");
+    const passInput = document.getElementById("passInput");
+    const statusNote = document.getElementById("statusNote");
+    const errorMsg = document.getElementById("errorMsg");
+    const socioBadge = document.getElementById("socioBadge");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    function mostrarError(texto) {
+      errorMsg.textContent = texto;
+      errorMsg.style.display = "block";
+    }
+
+    function ocultarError() {
+      errorMsg.textContent = "";
+      errorMsg.style.display = "none";
+    }
+
+    async function cargarSocios() {
+      loginBtn.disabled = true;
+      statusNote.textContent = "Cargando nómina de socios desde Google Sheets...";
+      try {
+        const rows = await fetchSheetCSV(SHEET_URLS.socios);
+        sociosCargados = rows
+          .map((r) => ({
+            rut: normalizarRut(r["RUT"] || ""),
+            nombre: r["Nombre Completo"] || r["Nombre"] || "Socio Sindicato DTS",
+            estado: (r["Estado"] || "ACTIVO").toUpperCase()
+          }))
+          .filter((s) => validarFormatoRutConGuion(s.rut) && s.estado === "ACTIVO");
+
+        statusNote.textContent = `Nómina sincronizada (${sociosCargados.length} socios activos).`;
+      } catch (err) {
+        statusNote.textContent = "Revisa que la pestaña Socios esté publicada en la web (.csv).";
+        mostrarError("No se pudo conectar con la planilla de socios en Google Sheets.");
+      } finally {
+        loginBtn.disabled = false;
+      }
+    }
+
+    async function cargarContenidoPortal() {
+      const stamp = new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" });
+      document.getElementById("syncStatusAvisos").textContent = `Sincronizado · ${stamp}`;
+      document.getElementById("syncStatusAsambleas").textContent = `Sincronizado · ${stamp}`;
+      document.getElementById("syncStatusDocumentos").textContent = `Sincronizado · ${stamp}`;
+
+      try {
+        const [avisosRows, asambleasRows, docsRows] = await Promise.all([
+          fetchSheetCSV(SHEET_URLS.avisos),
+          fetchSheetCSV(SHEET_URLS.asambleas),
+          fetchSheetCSV(SHEET_URLS.documentos)
+        ]);
+
+        portalData.avisos = avisosRows
+          .filter((r) => r["Titulo"] || r["Resumen"])
+          .map((r, idx) => ({
+            id: idx + 1,
+            fecha: r["Fecha"] || "",
+            categoria: r["Categoria"] || "General",
+            titulo: r["Titulo"] || "Aviso sin título",
+            resumen: r["Resumen"] || ""
+          }))
+          .reverse();
+
+        portalData.asambleas = asambleasRows
+          .filter((r) => r["Titulo"] || r["PuntosClave"])
+          .map((r, idx) => {
+            const rawPuntos = r["PuntosClave"] || "";
+            const puntos = rawPuntos
+              .split(/\r?\n/)
+              .map((p) => p.replace(/^[-•*]\s*/, "").trim())
+              .filter(Boolean);
+            const estado = r["Estado"] || "Registrada";
+            return {
+              id: idx + 1,
+              fecha: r["Fecha"] || "",
+              titulo: r["Titulo"] || "Asamblea Sindical",
+              estado,
+              destacada: estado.toLowerCase().includes("última") || estado.toLowerCase().includes("ultima"),
+              resumen: r["Resumen"] || "",
+              puntosClave: puntos,
+              linkDrive: r["LinkDrive"] || ""
+            };
+          })
+          .reverse();
+
+        portalData.documentos = docsRows
+          .filter((r) => r["Titulo"] || r["UrlDrive"])
+          .map((r) => ({
+            titulo: r["Titulo"] || "Documento sin título",
+            tipo: r["Tipo"] || "Documento · Drive",
+            descripcion: r["Descripcion"] || "",
+            url: r["UrlDrive"] || "#"
+          }))
+          .reverse();
+
+        renderPortal();
+      } catch (err) {
+        document.getElementById("avisosGrid").innerHTML =
+          `<div class="empty-state">No fue posible cargar las publicaciones desde Google Sheets. Verifica que las pestañas estén publicadas como CSV.</div>`;
+      }
+    }
+
+    function abrirPortal(socio) {
+      sessionStorage.setItem("dts_socio_rut", socio.rut);
+      socioBadge.textContent = `${socio.nombre} · ${socio.rut}`;
+      loginScreen.style.display = "none";
+      portalScreen.style.display = "block";
+      cargarContenidoPortal();
+    }
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      ocultarError();
+
+      if (sociosCargados.length === 0) {
+        await cargarSocios();
+      }
+
+      const rutNormalizado = normalizarRut(rutInput.value);
+      const claveIngresada = passInput.value.trim();
+
+      if (!validarFormatoRutConGuion(rutNormalizado)) {
+        mostrarError("Ingresa el RUT sin puntos y con guion (ejemplo: 20951867-8).");
+        return;
+      }
+
+      const claveEsperada = obtenerPrimerosCincoDigitos(rutNormalizado);
+      if (claveIngresada !== claveEsperada) {
+        mostrarError("La clave debe corresponder a los primeros 5 dígitos del RUT.");
+        return;
+      }
+
+      const socioEncontrado = sociosCargados.find((s) => s.rut === rutNormalizado);
+      if (!socioEncontrado) {
+        mostrarError("El RUT ingresado no figura activo en la nómina de socios.");
+        return;
+      }
+
+      abrirPortal(socioEncontrado);
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      sessionStorage.removeItem("dts_socio_rut");
+      passInput.value = "";
+      portalScreen.style.display = "none";
+      loginScreen.style.display = "flex";
+    });
+
+    refreshBtn.addEventListener("click", () => {
+      cargarContenidoPortal();
+    });
+
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".section-panel").forEach((p) => p.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+      });
+    });
+
+    function renderAvisos() {
+      const filtersContainer = document.getElementById("filtersContainer");
+      const avisosGrid = document.getElementById("avisosGrid");
+
+      if (portalData.avisos.length === 0) {
+        filtersContainer.innerHTML = "";
+        avisosGrid.innerHTML = `<div class="empty-state">Aún no hay avisos publicados en la planilla.</div>`;
+        return;
+      }
+
+      const categorias = ["Todos", ...new Set(portalData.avisos.map((a) => a.categoria))];
+      if (!categorias.includes(categoriaActiva)) {
+        categoriaActiva = "Todos";
+      }
+
+      filtersContainer.innerHTML = categorias
+        .map(
+          (cat) => `
+          <button
+            type="button"
+            class="filter-chip ${cat === categoriaActiva ? "active" : ""}"
+            data-cat="${cat}"
+          >${cat}</button>
+        `
+        )
+        .join("");
+
+      filtersContainer.querySelectorAll(".filter-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          categoriaActiva = chip.dataset.cat;
+          renderAvisos();
+        });
+      });
+
+      const filtrados =
+        categoriaActiva === "Todos"
+          ? portalData.avisos
+          : portalData.avisos.filter((a) => a.categoria === categoriaActiva);
+
+      avisosGrid.innerHTML = filtrados
+        .map(
+          (aviso) => `
+          <article class="card">
+            <div>
+              <div class="card-meta">
+                <span class="badge ${aviso.categoria.toLowerCase() === "urgente" ? "urgente" : ""}">${aviso.categoria}</span>
+                <span>${aviso.fecha}</span>
+              </div>
+              <h2 class="card-title">${aviso.titulo}</h2>
+              <p class="card-body">${aviso.resumen}</p>
+            </div>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function renderAsambleas() {
+      const list = document.getElementById("asambleasList");
+      if (portalData.asambleas.length === 0) {
+        list.innerHTML = `<div class="empty-state">Aún no hay asambleas registradas en la planilla.</div>`;
+        return;
+      }
+
+      list.innerHTML = portalData.asambleas
+        .map(
+          (asm) => `
+          <article class="assembly-card ${asm.destacada ? "destacada" : ""}">
+            <div class="assembly-top">
+              <div>
+                <div class="assembly-date">${[asm.fecha, asm.estado].filter(Boolean).join(" · ")}</div>
+                <h2 class="card-title" style="margin-top: 2px;">${asm.titulo}</h2>
+              </div>
+              <span class="badge">${asm.puntosClave.length} puntos clave</span>
+            </div>
+            ${asm.resumen ? `<p class="card-body">${asm.resumen}</p>` : ""}
+            ${
+              asm.puntosClave.length > 0
+                ? `
+              <div class="key-points-box">
+                <div class="key-points-title">Puntos clave tratados</div>
+                <ul class="key-points-list">
+                  ${asm.puntosClave.map((pto) => `<li>${pto}</li>`).join("")}
+                </ul>
+              </div>
+            `
+                : ""
+            }
+            ${
+              asm.linkDrive
+                ? `<a class="doc-link" href="${asm.linkDrive}" target="_blank" rel="noopener noreferrer">Ver respaldo en Google Drive →</a>`
+                : ""
+            }
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function renderDocumentos() {
+      const grid = document.getElementById("documentosGrid");
+      if (portalData.documentos.length === 0) {
+        grid.innerHTML = `<div class="empty-state">Aún no hay documentos cargados en la planilla.</div>`;
+        return;
+      }
+
+      grid.innerHTML = portalData.documentos
+        .map(
+          (doc) => `
+          <article class="card">
+            <div>
+              <div class="card-meta">
+                <span class="badge">${doc.tipo}</span>
+              </div>
+              <h2 class="card-title">${doc.titulo}</h2>
+              <p class="card-body">${doc.descripcion}</p>
+            </div>
+            <a class="doc-link" href="${doc.url}" target="_blank" rel="noopener noreferrer">Abrir en Google Drive →</a>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function renderPortal() {
+      renderAvisos();
+      renderAsambleas();
+      renderDocumentos();
+    }
+
+    (async function init() {
+      await cargarSocios();
+      const rutGuardado = sessionStorage.getItem("dts_socio_rut");
+      if (rutGuardado) {
+        const socio = sociosCargados.find((s) => s.rut === rutGuardado);
+        if (socio) {
+          abrirPortal(socio);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
