@@ -18,6 +18,10 @@
       --texto-muted: #5c6670;
       --alerta: #b45309;
       --alerta-fondo: #fef3c7;
+      --error: #991b1b;
+      --error-fondo: #fef2f2;
+      --info: #1e40af;
+      --info-fondo: #eff6ff;
       --sombra: 0 8px 24px rgba(26, 29, 31, 0.07);
       --radio: 12px;
     }
@@ -48,7 +52,7 @@
 
     .login-card {
       width: 100%;
-      max-width: 420px;
+      max-width: 430px;
       background: var(--blanco);
       border: 1px solid var(--borde);
       border-top: 5px solid var(--verde);
@@ -66,15 +70,15 @@
     }
 
     .logo-img {
-      width: 112px;
-      height: 112px;
+      width: 108px;
+      height: 108px;
       object-fit: contain;
       margin-bottom: 10px;
     }
 
     .logo-fallback {
-      width: 104px;
-      height: 104px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       border: 6px solid var(--gris-azulado);
       display: none;
@@ -102,7 +106,7 @@
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     label {
@@ -110,14 +114,18 @@
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--negro);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    select {
       width: 100%;
-      padding: 11px 13px;
-      font-size: 0.96rem;
+      padding: 10px 12px;
+      font-size: 0.94rem;
       border: 1.5px solid var(--borde);
       border-radius: 8px;
       color: var(--negro);
@@ -125,7 +133,8 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input:focus {
+    input:focus,
+    select:focus {
       outline: none;
       border-color: var(--verde);
       box-shadow: 0 0 0 3px rgba(44, 140, 26, 0.14);
@@ -134,15 +143,15 @@
     .help-text {
       font-size: 0.78rem;
       color: var(--texto-muted);
-      margin-top: 5px;
+      margin-top: 4px;
     }
 
     .btn-primary {
       width: 100%;
-      padding: 12px 16px;
+      padding: 11px 16px;
       background: var(--verde);
       color: var(--blanco);
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
       border: none;
       border-radius: 8px;
@@ -159,6 +168,21 @@
       cursor: not-allowed;
     }
 
+    .btn-outline-dark {
+      padding: 8px 13px;
+      background: var(--blanco);
+      color: var(--negro);
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-outline-dark:hover {
+      background: #f1f5f9;
+    }
+
     .status-note {
       margin-top: 12px;
       font-size: 0.8rem;
@@ -168,14 +192,49 @@
 
     .error-msg {
       display: none;
-      margin-top: 14px;
+      margin-top: 12px;
       padding: 10px 12px;
       border-radius: 8px;
-      background: #fef2f2;
+      background: var(--error-fondo);
       border: 1px solid #fecaca;
-      color: #991b1b;
-      font-size: 0.86rem;
+      color: var(--error);
+      font-size: 0.85rem;
       font-weight: 500;
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--verde-suave);
+      border: 1px solid #86efac;
+      color: var(--verde-oscuro);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .alert-banner {
+      display: none;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: var(--radio);
+      background: var(--alerta-fondo);
+      border: 1px solid #fcd34d;
+      color: #78350f;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .alert-banner-title {
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .alert-banner-desc {
+      font-size: 0.85rem;
     }
 
     /* ---------- PORTAL ---------- */
@@ -194,7 +253,7 @@
     }
 
     .topbar-inner {
-      max-width: 1040px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 12px 20px;
       display: flex;
@@ -234,14 +293,14 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       flex-wrap: wrap;
     }
 
     .rut-badge {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      padding: 5px 10px;
+      padding: 5px 11px;
       border-radius: 999px;
       font-weight: 600;
     }
@@ -265,27 +324,27 @@
     }
 
     .container {
-      max-width: 1040px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 24px 20px 48px;
+      padding: 24px 20px 56px;
     }
 
     .nav-tabs {
       display: flex;
       gap: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       border-bottom: 1px solid var(--borde);
       padding-bottom: 12px;
       flex-wrap: wrap;
     }
 
     .tab-btn {
-      padding: 9px 16px;
+      padding: 9px 15px;
       border-radius: 8px;
       border: 1px solid var(--borde);
       background: var(--blanco);
       color: var(--negro);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
@@ -327,15 +386,24 @@
       color: var(--texto-muted);
     }
 
-    .filters {
+    .toolbar-row {
       display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
     }
 
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     .filter-chip {
-      padding: 6px 12px;
+      padding: 6px 13px;
       font-size: 0.82rem;
       font-weight: 600;
       border-radius: 999px;
@@ -366,7 +434,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
 
     .card-meta {
@@ -388,9 +456,20 @@
       color: var(--verde-oscuro);
     }
 
-    .badge.urgente {
+    .badge.urgente,
+    .badge.pendiente {
       background: var(--alerta-fondo);
       color: var(--alerta);
+    }
+
+    .badge.nopagada {
+      background: var(--error-fondo);
+      color: var(--error);
+    }
+
+    .badge.info {
+      background: var(--info-fondo);
+      color: var(--info);
     }
 
     .card-title {
@@ -404,6 +483,70 @@
       font-size: 0.92rem;
       color: var(--texto);
       white-space: pre-line;
+    }
+
+    /* ---------- CUOTAS POR PERIODO ---------- */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .summary-box {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-top: 4px solid var(--verde);
+      border-radius: var(--radio);
+      padding: 16px;
+    }
+
+    .summary-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--texto-muted);
+      text-transform: uppercase;
+    }
+
+    .summary-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--negro);
+      margin-top: 4px;
+    }
+
+    .summary-sub {
+      font-size: 0.82rem;
+      color: var(--texto-muted);
+      margin-top: 2px;
+    }
+
+    .table-wrap {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      overflow-x: auto;
+      box-shadow: 0 2px 10px rgba(26, 29, 31, 0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 11px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: var(--negro);
+      font-size: 0.8rem;
+      text-transform: uppercase;
     }
 
     /* ---------- ASAMBLEAS ---------- */
@@ -470,7 +613,7 @@
 
     .doc-link {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 0.88rem;
       font-weight: 700;
       color: var(--verde-oscuro);
@@ -481,6 +624,33 @@
       text-decoration: underline;
     }
 
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #edf2f7;
+      font-size: 0.9rem;
+    }
+
+    .info-label {
+      color: var(--texto-muted);
+      font-weight: 600;
+    }
+
+    .info-val {
+      color: var(--negro);
+      font-weight: 600;
+      text-align: right;
+      word-break: break-word;
+    }
+
     .empty-state {
       background: var(--blanco);
       border: 1px dashed var(--borde);
@@ -489,6 +659,13 @@
       text-align: center;
       color: var(--texto-muted);
       font-size: 0.92rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
     @media (max-width: 600px) {
@@ -533,19 +710,19 @@
         </div>
 
         <div class="form-group">
-          <label for="passInput">Clave (primeros 5 dígitos del RUT)</label>
+          <label for="passInput">Clave (por defecto primeros 5 dígitos del RUT)</label>
           <input
             type="password"
             id="passInput"
             placeholder="Ej: 20951"
-            maxlength="5"
             autocomplete="current-password"
             required
           />
+          <div class="help-text">Si ya cambiaste tu clave, ingresa tu clave actual.</div>
         </div>
 
         <button id="loginBtn" type="submit" class="btn-primary">Ingresar al portal</button>
-        <div id="statusNote" class="status-note">Conectando con nómina de socios...</div>
+        <div id="statusNote" class="status-note">Cargando nómina de socios y cuotas...</div>
         <div id="errorMsg" class="error-msg"></div>
       </form>
     </div>
@@ -564,7 +741,7 @@
           />
           <div>
             <div class="topbar-name">SINDICATO DTS</div>
-            <div class="topbar-tag">Comunicación oficial y acuerdos sindicales</div>
+            <div class="topbar-tag">Intranet de Socios · Cuotas, Acuerdos y Documentos</div>
           </div>
         </div>
 
@@ -577,14 +754,56 @@
     </header>
 
     <div class="container">
+      <!-- AVISO SI FALTAN DATOS DE CONTACTO -->
+      <div id="missingContactBanner" class="alert-banner">
+        <div>
+          <div class="alert-banner-title">Completa tus datos de contacto</div>
+          <div id="missingContactText" class="alert-banner-desc">
+            Detectamos que te falta registrar correo personal o teléfono para avisos y asambleas.
+          </div>
+        </div>
+        <button type="button" id="goToPerfilBtn" class="btn-primary" style="width:auto; padding:9px 15px;">
+          Completar ahora
+        </button>
+      </div>
+
       <nav class="nav-tabs" aria-label="Secciones de la intranet">
-        <button type="button" class="tab-btn active" data-tab="avisos">Avisos</button>
+        <button type="button" class="tab-btn active" data-tab="cuotas">Mis Cuotas Sindicales</button>
+        <button type="button" class="tab-btn" data-tab="avisos">Avisos</button>
         <button type="button" class="tab-btn" data-tab="asambleas">Asambleas y Puntos Clave</button>
         <button type="button" class="tab-btn" data-tab="documentos">Documentos (Drive)</button>
+        <button type="button" class="tab-btn" data-tab="perfil">Mi Contacto y Clave</button>
       </nav>
 
+      <!-- SECCIÓN MIS CUOTAS POR PERIODO -->
+      <section id="tab-cuotas" class="section-panel active">
+        <div class="section-header">
+          <h1 class="section-title">Mis Cuotas Sindicales por Período</h1>
+          <span id="syncStatusCuotas" class="sync-info"></span>
+        </div>
+
+        <div class="toolbar-row">
+          <div id="periodoChips" class="filters"></div>
+          <div class="filters">
+            <button type="button" class="filter-chip active" data-estado-cuota="Todos">Todos</button>
+            <button type="button" class="filter-chip" data-estado-cuota="PAGADA">Pagadas</button>
+            <button type="button" class="filter-chip" data-estado-cuota="PENDIENTE">Pendientes</button>
+            <button type="button" class="filter-chip" data-estado-cuota="NO APLICA">No aplica</button>
+          </div>
+        </div>
+
+        <div id="cuotasResumen" class="summary-grid"></div>
+
+        <div class="btn-row" style="margin-bottom: 14px;">
+          <button type="button" id="copyCuotasBtn" class="btn-outline-dark">Copiar resumen de cuotas</button>
+          <span id="copyCuotasFeedback" class="sync-info"></span>
+        </div>
+
+        <div id="cuotasTablaWrap" class="table-wrap"></div>
+      </section>
+
       <!-- SECCIÓN AVISOS -->
-      <section id="tab-avisos" class="section-panel active">
+      <section id="tab-avisos" class="section-panel">
         <div class="section-header">
           <h1 class="section-title">Avisos y Comunicados</h1>
           <span id="syncStatusAvisos" class="sync-info"></span>
@@ -608,26 +827,180 @@
           <h1 class="section-title">Documentos Oficiales</h1>
           <span id="syncStatusDocumentos" class="sync-info"></span>
         </div>
+        <div class="form-group" style="max-width: 360px;">
+          <input type="search" id="docSearchInput" placeholder="Buscar documento por título o tipo..." />
+        </div>
         <div id="documentosGrid" class="grid-cards"></div>
+      </section>
+
+      <!-- SECCIÓN MI CONTACTO Y CAMBIO DE CLAVE -->
+      <section id="tab-perfil" class="section-panel">
+        <div class="section-header">
+          <h1 class="section-title">Mi Correo, Teléfono y Cambio de Clave</h1>
+          <span class="sync-info">Actualización de datos personales y seguridad</span>
+        </div>
+
+        <div class="profile-grid">
+          <!-- ESTADO ACTUAL DE CORREOS Y TELEFONO -->
+          <article class="card">
+            <div>
+              <h2 class="card-title">Datos Registrados Actualmente</h2>
+              <div id="datosSocioBox"></div>
+            </div>
+            <div>
+              <div class="help-text" style="margin-bottom:8px;">
+                Si guardas cambios aquí, quedan activos en tu sesión y navegador; también puedes copiar tu ficha para enviarla a la directiva o actualizarla en la planilla.
+              </div>
+              <button type="button" id="copyFichaBtn" class="btn-outline-dark">Copiar ficha de contacto</button>
+              <span id="copyFichaFeedback" class="sync-info" style="margin-left:8px;"></span>
+            </div>
+          </article>
+
+          <!-- FORMULARIO ACTUALIZAR CORREO Y TELEFONO -->
+          <article class="card">
+            <div>
+              <h2 class="card-title">Actualizar Correo y Teléfono</h2>
+              <p class="card-body" style="margin-bottom: 12px; font-size: 0.88rem;">
+                Completa o corrige tu correo personal y teléfono si no aparecen registrados o cambiaron.
+              </p>
+              <form id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="correoPersonalInput">Correo personal</label>
+                  <input type="email" id="correoPersonalInput" placeholder="Ej: nombre@correo.cl" />
+                  <div id="correoPersonalHint" class="help-text"></div>
+                </div>
+                <div class="form-group">
+                  <label for="correoDtsInput">Correo DTS (referencia institucional)</label>
+                  <input type="email" id="correoDtsInput" placeholder="Ej: socio@dts.cl" />
+                </div>
+                <div class="form-group">
+                  <label for="telefonoInput">Teléfono / Celular</label>
+                  <input type="tel" id="telefonoInput" placeholder="Ej: +56912345678" />
+                  <div id="telefonoHint" class="help-text"></div>
+                </div>
+                <button type="submit" class="btn-primary">Guardar datos de contacto</button>
+                <div id="contactErrorMsg" class="error-msg"></div>
+                <div id="contactSuccessMsg" class="success-msg"></div>
+              </form>
+            </div>
+          </article>
+
+          <!-- FORMULARIO CAMBIO DE CLAVE -->
+          <article class="card">
+            <div>
+              <h2 class="card-title">Cambiar Clave de Acceso</h2>
+              <p class="card-body" style="margin-bottom: 12px; font-size: 0.88rem;">
+                Define una nueva clave (mínimo 5 caracteres). Por defecto, tu clave inicial son los primeros 5 dígitos de tu RUT.
+              </p>
+              <form id="changePassForm" novalidate>
+                <div class="form-group">
+                  <label for="currentPassInput">Clave actual</label>
+                  <input type="password" id="currentPassInput" required />
+                </div>
+                <div class="form-group">
+                  <label for="newPassInput">Nueva clave (mín. 5 caracteres)</label>
+                  <input type="password" id="newPassInput" minlength="5" required />
+                </div>
+                <div class="form-group">
+                  <label for="confirmPassInput">Confirmar nueva clave</label>
+                  <input type="password" id="confirmPassInput" minlength="5" required />
+                </div>
+                <div class="btn-row">
+                  <button type="submit" class="btn-primary" style="flex:1;">Guardar nueva clave</button>
+                  <button type="button" id="resetPassDefaultBtn" class="btn-outline-dark">Restaurar clave inicial</button>
+                </div>
+                <div id="passErrorMsg" class="error-msg"></div>
+                <div id="passSuccessMsg" class="success-msg"></div>
+              </form>
+            </div>
+          </article>
+        </div>
       </section>
     </div>
   </main>
 
   <script>
+    const APPS_SCRIPT_SYNC_URL = "";
+
     const SHEET_URLS = {
-      socios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=1706204470&single=true&output=csv",
-      avisos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=1742449835&single=true&output=csv",
-      asambleas: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=580746273&single=true&output=csv",
-      documentos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDWWnViVYTv0oSRNfDLhrkxLmd8NGZpCO2s8BzyWs2LRgriqP0iwHXhzBu3NjcFQ/pub?gid=330399263&single=true&output=csv"
+      socios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=893542668&single=true&output=csv",
+      cuotas: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=1195549402&single=true&output=csv",
+      avisos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=76526282&single=true&output=csv",
+      asambleas: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=626294117&single=true&output=csv",
+      documentos: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=1809325851&single=true&output=csv"
     };
 
+    const SOCIOS_BASE = [{"rut":"8114500-8","nombre":"GABRIEL IVAN VERA ALVAREZ","estado":"ACTIVO","correo":"gvera@dts.cl","correoDts":"gvera@dts.cl","correoPersonal":"gaveral@hotmail.com","telefono":"982073250","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"81145","claveActual":"81145","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"20162900-4","nombre":"MAXIMILIANO ANTONIO GONZALES SEPULVEDA","estado":"ACTIVO","correo":"magonzalez@dts.cl","correoDts":"magonzalez@dts.cl","correoPersonal":"max.gonzalezsepulveda@gmail.com","telefono":"+56930227089","area":"EMBEBIDOS","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"20162","claveActual":"20162","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10727782-K","nombre":"MARCO ANTONIO PAVEZ MUZA","estado":"ACTIVO","correo":"mpavez@dts.cl","correoDts":"mpavez@dts.cl","correoPersonal":"MARCO_PAVEZ@YAHOO.ES","telefono":"+56992204585","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"10727","claveActual":"10727","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10300721-6","nombre":"SERGIO PATRICIO PAEZ SALAZAR","estado":"ACTIVO","correo":"spaez@dts.cl","correoDts":"spaez@dts.cl","correoPersonal":"paez.salazar@gmail.com","telefono":"+56 940024821","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"10300","claveActual":"10300","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10378387-9","nombre":"GUILLERMO DEL CARMEN RIVERA LATORRE","estado":"ACTIVO","correo":"grivera@dts.cl","correoDts":"grivera@dts.cl","correoPersonal":"guillermo.grivera@gmail.com","telefono":"56978450947","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"10378","claveActual":"10378","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10646057-4","nombre":"LUIS RAMON TORRES ARCE","estado":"ACTIVO","correo":"ltorres@dts.cl","correoDts":"ltorres@dts.cl","correoPersonal":"luis.torres.arce@gmail.com","telefono":"962044734","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"10646","claveActual":"10646","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10705253-4","nombre":"JORGE EDUARDO CAMPOS CASTRO","estado":"ACTIVO","correo":"jorge.campos@dts.cl","correoDts":"jorge.campos@dts.cl","correoPersonal":"jorge.champion@gmail.com","telefono":"+56930845869","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"10705","claveActual":"10705","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"18092109-5","nombre":"DEBORAH ANDREA ACEVEDO PAVEZ","estado":"ACTIVO","correo":"dacevedo@dts.cl","correoDts":"dacevedo@dts.cl","correoPersonal":"deborah.acevedo@usach.cl","telefono":"977768832","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"18092","claveActual":"18092","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"12855310-K","nombre":"JAVIER ANDRES SILVA GATICA","estado":"ACTIVO","correo":"jsilva@dts.cl","correoDts":"jsilva@dts.cl","correoPersonal":"jsilvag2004@hotmail.com","telefono":"9540559826","area":"EMBEBIDOS","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"12855","claveActual":"12855","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"19993338-8","nombre":"LUCIANO ALONSO MONTIEL ESCARATE","estado":"ACTIVO","correo":"lmontiel@dts.cl","correoDts":"lmontiel@dts.cl","correoPersonal":"luciano98montiel@gmail.com","telefono":"988064595","area":"EMBEBIDOS","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"19993","claveActual":"19993","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"17427688-9","nombre":"ALEX PHILLIP MALTEZ MEJIAS","estado":"ACTIVO","correo":"amaltez@dts.cl","correoDts":"amaltez@dts.cl","correoPersonal":"amaltez23@gmail.com","telefono":"+56982877837","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"17427","claveActual":"17427","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"7869310-K","nombre":"CLAUDIO PATRICIO LEIVA SALAS","estado":"ACTIVO","correo":"cleiva@dts.cl","correoDts":"cleiva@dts.cl","correoPersonal":"yocleiva@hotmail.com","telefono":"997434396","area":"GCO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"78693","claveActual":"78693","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"19515728-6","nombre":"PABLO ANDRES FUENTES FUENTEALBA","estado":"ACTIVO","correo":"pfuentes@dts.cl","correoDts":"pfuentes@dts.cl","correoPersonal":"","telefono":"956237063","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"19515","claveActual":"19515","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"18849761-6","nombre":"EKTOR YVAN AREVALO BASTIAS","estado":"ACTIVO","correo":"earevalo@dts.cl","correoDts":"earevalo@dts.cl","correoPersonal":"ektorarevalo@gmail.com","telefono":"967174462","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"18849","claveActual":"18849","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"17025793-6","nombre":"DANIELA PAZ VILLAGRAN CEPEDES","estado":"ACTIVO","correo":"dvillagran@dts.cl","correoDts":"dvillagran@dts.cl","correoPersonal":"daniela.paz.vc@gmail.com","telefono":"977021669","area":"GCO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"17025","claveActual":"17025","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":11,"total":12,"monto":55000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"19635066-7","nombre":"NOEMI ALEJANDRA VALDEBENITO VIDAL","estado":"ACTIVO","correo":"nvaldebenito@dts.cl","correoDts":"nvaldebenito@dts.cl","correoPersonal":"noemivv97@gmail.com","telefono":"+56974404964","area":"ADMINISTRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"19635","claveActual":"19635","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"20163760-0","nombre":"KAREN VALESKA GODOY ROCHA","estado":"ACTIVO","correo":"kgodoy@dts.cl","correoDts":"kgodoy@dts.cl","correoPersonal":"k.godoyrocha@gmail.com","telefono":"953502640","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"20163","claveActual":"20163","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"16576145-6","nombre":"ROBERTO RENATO CARVALLO ESCUDERO","estado":"ACTIVO","correo":"rcarvallo@dts.cl","correoDts":"rcarvallo@dts.cl","correoPersonal":"Rrcarvalloe@gmail.com","telefono":"+56941370099","area":"EMBEBIDOS","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"16576","claveActual":"16576","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"6871770-1","nombre":"JAIME PATRICIO MORALES NAVARRETE","estado":"ACTIVO","correo":"jmorales@dts.cl","correoDts":"jmorales@dts.cl","correoPersonal":"","telefono":"5696600 9001","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"68717","claveActual":"68717","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"17650834-5","nombre":"CRISTOPHER ANDRES LOYOLA ZUÑIGA","estado":"ACTIVO","correo":"cloyola@dts.cl","correoDts":"cloyola@dts.cl","correoPersonal":"cris.loyola.991@gmail.com","telefono":"+56955144703","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"30-05-2024","claveInicial":"17650","claveActual":"17650","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"14283705-6","nombre":"JOSE EDUARDO PEREZ GARCIA","estado":"ACTIVO","correo":"jose.perez@dts.cl","correoDts":"jose.perez@dts.cl","correoPersonal":"pepeperez860@gmail.com","telefono":"+56998694482","area":"SOPORTE","sucursal":"TALCAHUANO","fechaAfiliacion":"04-06-2024","claveInicial":"14283","claveActual":"14283","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"13908223-0","nombre":"FRANCISCO ANTONIO FERNANDEZ SILVA","estado":"ACTIVO","correo":"ffernandez@dts.cl","correoDts":"ffernandez@dts.cl","correoPersonal":"ffernandezsilva@gmail.com","telefono":"986620064","area":"SOPORTE","sucursal":"PUDAHUEL","fechaAfiliacion":"04-06-2024","claveInicial":"13908","claveActual":"13908","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"16072365-3","nombre":"JORGE IGNACIO GORIGOITIA CONTRERAS","estado":"ACTIVO","correo":"jgorigoitia@dts.cl","correoDts":"jgorigoitia@dts.cl","correoPersonal":"","telefono":"56971561988","area":"DES. SOF","sucursal":"MACUL","fechaAfiliacion":"05-06-2024","claveInicial":"16072","claveActual":"16072","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"20056303-4","nombre":"CAMILA ALEJANDRA TAPIA RABI","estado":"ACTIVO","correo":"camila.tapia@dts.cl","correoDts":"camila.tapia@dts.cl","correoPersonal":"Camila.tapia.r@usach.cl","telefono":"+56958885387","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"05-06-2024","claveInicial":"20056","claveActual":"20056","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"9401993-1","nombre":"JOSEFINA DE LOURDES REYES MUÑOZ","estado":"ACTIVO","correo":"joreyes@dts.cl","correoDts":"joreyes@dts.cl","correoPersonal":"jo6reyes@gmail.com","telefono":"99507 9414","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"05-06-2024","claveInicial":"94019","claveActual":"94019","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"20467918-5","nombre":"ALVARO ALONSO MENESES PONCE","estado":"ACTIVO","correo":"alvaro.meneses@dts.cl","correoDts":"alvaro.meneses@dts.cl","correoPersonal":"loxson@outlook.es","telefono":"+56935589207","area":"ADMINISTRACION","sucursal":"MACUL","fechaAfiliacion":"06-06-2024","claveInicial":"20467","claveActual":"20467","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"8115967-K","nombre":"JAIME ANTONIO DONOSO CACERES","estado":"ACTIVO","correo":"jdonoso@dts.cl","correoDts":"jdonoso@dts.cl","correoPersonal":"databiker@gmail.com","telefono":"987748767","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"06-06-2024","claveInicial":"81159","claveActual":"81159","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"12716979-9","nombre":"ANDRES ROBERTO BAHAMONDES VELASQUEZ","estado":"ACTIVO","correo":"abahamondes@dts.cl","correoDts":"abahamondes@dts.cl","correoPersonal":"","telefono":"","area":"SOPORTE","sucursal":"IQUIQUE","fechaAfiliacion":"06-06-2024","claveInicial":"12716","claveActual":"12716","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"11524988-6","nombre":"MARCELO CHRISTIAN AVALOS FIGUEROA","estado":"ACTIVO","correo":"mavalos@dts.cl","correoDts":"mavalos@dts.cl","correoPersonal":"","telefono":"995451872","area":"SOPORTE","sucursal":"IQUIQUE","fechaAfiliacion":"06-06-2024","claveInicial":"11524","claveActual":"11524","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"19180667-0","nombre":"ALEJANDRO VALENTIN JARA VASQUEZ","estado":"ACTIVO","correo":"ajara@dts.cl","correoDts":"ajara@dts.cl","correoPersonal":"Aljarava@gmail.com","telefono":"+56948496501","area":"SOPORTE","sucursal":"IQUIQUE","fechaAfiliacion":"06-06-2024","claveInicial":"19180","claveActual":"19180","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"18638403-2","nombre":"ESTEBAN ENRIQUE CORREA CASTRO","estado":"ACTIVO","correo":"ecorrea@dts.cl","correoDts":"ecorrea@dts.cl","correoPersonal":"","telefono":"984631100","area":"SOPORTE","sucursal":"IQUIQUE","fechaAfiliacion":"06-06-2024","claveInicial":"18638","claveActual":"18638","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"18724099-9","nombre":"ANDRES IGNACIO JORQUERA HERRERA","estado":"ACTIVO","correo":"ajorquera@dts.cl","correoDts":"ajorquera@dts.cl","correoPersonal":"","telefono":"56978987584","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"07-06-2024","claveInicial":"18724","claveActual":"18724","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"10311480-2","nombre":"PEDRO ALEXIS SAAVEDRA MOLINA","estado":"ACTIVO","correo":"psaavedra@dts.cl","correoDts":"psaavedra@dts.cl","correoPersonal":"pedrosm3412@gmail.com","telefono":"+56983002751","area":"CALIDAD","sucursal":"PUDAHUEL","fechaAfiliacion":"06-06-2024","claveInicial":"10311","claveActual":"10311","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"8313148-9","nombre":"JOSE MIGUEL MUJICA NEIRA","estado":"ACTIVO","correo":"jmujica@dts.cl","correoDts":"jmujica@dts.cl","correoPersonal":"josemujican@gmail.com","telefono":"+569 75788261","area":"SOPORTE","sucursal":"IQUIQUE","fechaAfiliacion":"10-06-2024","claveInicial":"83131","claveActual":"83131","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"11291400-5","nombre":"MANUEL HUMBERTO TOLOZA NORAMBUENA","estado":"ACTIVO","correo":"mtoloza@dts.cl","correoDts":"mtoloza@dts.cl","correoPersonal":"mtolozan@hotmail.com","telefono":"9 7517 1373","area":"SOPORTE","sucursal":"ANTOFAGASTA","fechaAfiliacion":"14-06-2024","claveInicial":"11291","claveActual":"11291","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"11653135-6","nombre":"CRISTIAN ANDRES GUACUCANO BRAVO","estado":"ACTIVO","correo":"cguacucano@dts.cl","correoDts":"cguacucano@dts.cl","correoPersonal":"cgodbravo@hotmail.com","telefono":"+56957759982","area":"SOPORTE","sucursal":"PUNTA ARENAS","fechaAfiliacion":"14-06-2024","claveInicial":"11653","claveActual":"11653","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"16717036-6","nombre":"CATALINA ABIGAIL VERA VASQUEZ","estado":"ACTIVO","correo":"cvera@dts.cl","correoDts":"cvera@dts.cl","correoPersonal":"catalina.verav@gmail.com","telefono":"964076287","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"17-06-2024","claveInicial":"16717","claveActual":"16717","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"8315831-K","nombre":"MAURICIO ALBERTO JOFRE LOPEZ","estado":"ACTIVO","correo":"mjofre@dts.cl","correoDts":"mjofre@dts.cl","correoPersonal":"","telefono":"972161506","area":"SOPORTE","sucursal":"PUDAHUEL","fechaAfiliacion":"18-06-2024","claveInicial":"83158","claveActual":"83158","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"19238850-3","nombre":"ADRIAN ANTONIO REYES OPAZO","estado":"ACTIVO","correo":"areyes@dts.cl","correoDts":"areyes@dts.cl","correoPersonal":"","telefono":"56992179546","area":"MANTENIMIENTO","sucursal":"TALCAHUANO","fechaAfiliacion":"19-06-2024","claveInicial":"19238","claveActual":"19238","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"17440162-4","nombre":"EDUARDO JAVIER BALBOA VASQUEZ","estado":"ACTIVO","correo":"ebalboa@dts.cl","correoDts":"ebalboa@dts.cl","correoPersonal":"","telefono":"954182946","area":"MANTENIMIENTO","sucursal":"TALCAHUANO","fechaAfiliacion":"01-07-2024","claveInicial":"17440","claveActual":"17440","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"13918519-6","nombre":"JAVIER ENRIQUE URIBE MARTINEZ","estado":"ACTIVO","correo":"juribe@dts.cl","correoDts":"juribe@dts.cl","correoPersonal":"","telefono":"985235948","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"09-07-2024","claveInicial":"13918","claveActual":"13918","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"18577116-4","nombre":"ALEX IGNACIO MARTINEZ FIGUEROA","estado":"ACTIVO","correo":"amartinez@dts.cl","correoDts":"amartinez@dts.cl","correoPersonal":"","telefono":"56995160933","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"10-07-2024","claveInicial":"18577","claveActual":"18577","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"16047029-1","nombre":"LUIS ALBERTO GONZALES BURGOS","estado":"ACTIVO","correo":"lgonzalez@dts.cl","correoDts":"lgonzalez@dts.cl","correoPersonal":"lagburgos29@gmail.com","telefono":"56920140574","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"17-12-2024","claveInicial":"16047","claveActual":"16047","periodos":{"2024":[{"mes":"Julio","monto":0,"estado":"NO PAGADA","obs":"Monto 0"},{"mes":"Agosto","monto":0,"estado":"NO PAGADA","obs":"Monto 0"},{"mes":"Septiembre","monto":0,"estado":"NO PAGADA","obs":"Monto 0"},{"mes":"Octubre","monto":0,"estado":"NO PAGADA","obs":"Monto 0"},{"mes":"Noviembre","monto":0,"estado":"NO PAGADA","obs":"Monto 0"},{"mes":"Diciembre","monto":0,"estado":"NO PAGADA","obs":"Monto 0"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":0,"total":6,"monto":0},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"15820069-4","nombre":"ROBERT ALAMIDES CANALES ROJAS","estado":"ACTIVO","correo":"rcanales@dts.cl","correoDts":"rcanales@dts.cl","correoPersonal":"roberotu@hotmail.com","telefono":"+56976238504","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"17-12-2024","claveInicial":"15820","claveActual":"15820","periodos":{"2024":[{"mes":"Julio","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"Agosto","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"Septiembre","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"Octubre","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"Noviembre","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"Diciembre","monto":0,"estado":"NO APLICA","obs":"N/A"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":0,"total":6,"monto":0},"2025":{"pagadas":12,"total":12,"monto":60000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"9743669-K","nombre":"CRISTIAN MANUEL LEIVA HERRERA","estado":"ACTIVO","correo":"cristian.leiva@dts.cl","correoDts":"cristian.leiva@dts.cl","correoPersonal":"cristian.leiva.555@gmail.com","telefono":"974077929","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"12-03-2025","claveInicial":"97436","claveActual":"97436","periodos":{"2025":[{"mes":"enero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"febrero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"febrero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":10,"total":12,"monto":50000},"2026":{"pagadas":1,"total":10,"monto":5000}}},{"rut":"16598509-5","nombre":"GISSELA FRANCESCA CANALES VALENZUELA","estado":"ACTIVO","correo":"gissela.canales@dts.cl","correoDts":"gissela.canales@dts.cl","correoPersonal":"gisselacanalesv@gmail.com","telefono":"940366445","area":"MARKETING","sucursal":"MACUL","fechaAfiliacion":"29-05-2025","claveInicial":"16598","claveActual":"16598","periodos":{"2025":[{"mes":"enero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"febrero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"marzo 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"abril 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"may-25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"jun-26","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"sep-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"oct-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"febrero 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"marzo 25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":6,"total":12,"monto":30000},"2026":{"pagadas":0,"total":10,"monto":0}}},{"rut":"6982158-8","nombre":"LUIS JAIME CHAPARRO MUÑOZ","estado":"ACTIVO","correo":"jchaparro@dts.cl","correoDts":"jchaparro@dts.cl","correoPersonal":"jaimechaparromunoz@gmail.com","telefono":"+56977602278","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"24-05-2024","claveInicial":"69821","claveActual":"69821","periodos":{"2024":[{"mes":"Julio","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Agosto","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Septiembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Octubre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Noviembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"Diciembre","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2025":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"may-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jun-26","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"jul-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"ago-25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"sep-25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"oct-25","monto":0,"estado":"NO APLICA","obs":"N/A"},{"mes":"nov-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"dic-25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"}],"2026":[{"mes":"enero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"febrero 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"marzo 25","monto":5000,"estado":"PAGADA","obs":"Cuota registrada"},{"mes":"abril 25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"may-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jun-26","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"jul-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"ago-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"sep-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"},{"mes":"oct-25","monto":0,"estado":"PENDIENTE","obs":"Sin registro"}]},"resumen":{"2024":{"pagadas":6,"total":6,"monto":30000},"2025":{"pagadas":9,"total":12,"monto":45000},"2026":{"pagadas":3,"total":10,"monto":15000}}},{"rut":"20187049-6","nombre":"NICOLÁS MARQUEZ CARRANZA","estado":"ACTIVO","correo":"nicolas.marquez@dts.cl","correoDts":"nicolas.marquez@dts.cl","correoPersonal":"Nicolas.marquezca@gmail.com","telefono":"+56 965934489","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"20-04-2026","claveInicial":"20187","claveActual":"20187","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"17071864-K","nombre":"ISMAEL ROBERTO ACEVEDO PAVEZ","estado":"ACTIVO","correo":"ismael.acevedo@dts.cl","correoDts":"ismael.acevedo@dts.cl","correoPersonal":"ismaelpvp@gmail.com","telefono":"964219505","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"26-May-26","claveInicial":"17071","claveActual":"17071","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"27341105-4","nombre":"ALEJANDRO CARRILLO ALVAREZ","estado":"ACTIVO","correo":"alejandro.carrillo@dts.cl","correoDts":"alejandro.carrillo@dts.cl","correoPersonal":"alejandroc9418@gmail.com","telefono":"959234326","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"","claveInicial":"27341","claveActual":"27341","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"17562407-4","nombre":"FRANCISCO MARCELO REYES GAJARDO","estado":"ACTIVO","correo":"freyes@dts.cl","correoDts":"freyes@dts.cl","correoPersonal":"f.reyesgajardo@gmail.com","telefono":"976620450","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"","claveInicial":"17562","claveActual":"17562","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"20139618-2","nombre":"BRAYAN JESUS PACHECO ALARCÓN","estado":"ACTIVO","correo":"bpacheco@dts.cl","correoDts":"bpacheco@dts.cl","correoPersonal":"BRA.PACHECO.ALARCON@GMAIL.COM","telefono":"931256379","area":"DES. SOF","sucursal":"MACUL","fechaAfiliacion":"13-08-2026","claveInicial":"20139","claveActual":"20139","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"18550381-K","nombre":"FRANCISCO JAVIER SEGUEL NEIRA","estado":"ACTIVO","correo":"francisco.seguel@dts.cl","correoDts":"francisco.seguel@dts.cl","correoPersonal":"franciscoseguel@gmail.com","telefono":"975283876","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"13-08-2026","claveInicial":"18550","claveActual":"18550","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"19904702-7","nombre":"DIEGO ANDRES ORTEGA MONARES","estado":"ACTIVO","correo":"diego.ortega@dts.cl","correoDts":"diego.ortega@dts.cl","correoPersonal":"Diego.omonares@gmail.com","telefono":"931925905","area":"CALIBRACION","sucursal":"MACUL","fechaAfiliacion":"14-08-2026","claveInicial":"19904","claveActual":"19904","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"20098070-0","nombre":"IGNACIO EVALDO VILCHES ANGULO","estado":"ACTIVO","correo":"ignacio.vilches@dts.cl","correoDts":"ignacio.vilches@dts.cl","correoPersonal":"naxvixd@gmail.com","telefono":"981235663","area":"EMBEBIDOS","sucursal":"MACUL","fechaAfiliacion":"13-08-2026","claveInicial":"20098","claveActual":"20098","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"18638517-9","nombre":"GAVINO GABRIEL GARCIA VARELA","estado":"ACTIVO","correo":"ggarcia@dts.cl","correoDts":"ggarcia@dts.cl","correoPersonal":"gavino3oa4@gmail.com","telefono":"984711960","area":"DMS","sucursal":"MACUL","fechaAfiliacion":"13-08-2026","claveInicial":"18638","claveActual":"18638","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"18212138-K","nombre":"CAROLINA YANARA IBAÑEZ PARRAGUEZ","estado":"ACTIVO","correo":"carolina.ibanez@dts.cl","correoDts":"carolina.ibanez@dts.cl","correoPersonal":"carolina.yanara@gmail.com","telefono":"974460500","area":"CALIDAD","sucursal":"MACUL","fechaAfiliacion":"14-08-2006","claveInicial":"18212","claveActual":"18212","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"17054103-0","nombre":"JONATHAN ALBERTO MEDINA CABEZA","estado":"ACTIVO","correo":"jonathan.medina@dts.cl","correoDts":"jonathan.medina@dts.cl","correoPersonal":"jonathanmedina1989@gmail.com","telefono":"944457373","area":"MANTENIMIENTO","sucursal":"MACUL","fechaAfiliacion":"18-08-2026","claveInicial":"17054","claveActual":"17054","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"16681746-3","nombre":"JOCELYN TAMARA CAMPOS LAZO","estado":"ACTIVO","correo":"jocelyn.campos@dts.cl","correoDts":"jocelyn.campos@dts.cl","correoPersonal":"Jocelyncamposlazo@gmail.com","telefono":"944868112","area":"VENTAS","sucursal":"MACUL","fechaAfiliacion":"20-08-2026","claveInicial":"16681","claveActual":"16681","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"20285217-3","nombre":"HERNAN FELIPE RIVERA ACUÑA","estado":"ACTIVO","correo":"hernan.rivera@dts.cl","correoDts":"hernan.rivera@dts.cl","correoPersonal":"hernan-rivera09@hotmail.com","telefono":"984143168","area":"DMS","sucursal":"MACUL","fechaAfiliacion":"20-08-2026","claveInicial":"20285","claveActual":"20285","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"19373357-3","nombre":"MOISÉS ALEJANDRO BARRAZA RIQUELME","estado":"ACTIVO","correo":"mbarraza@dts.cl","correoDts":"mbarraza@dts.cl","correoPersonal":"mobarrazr@gmail.com","telefono":"959547746","area":"I+D","sucursal":"MACUL","fechaAfiliacion":"20-08-2026","claveInicial":"19373","claveActual":"19373","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"19733341-3","nombre":"CRISTIAN ANDRÉS HORMAZABAL CHEUQUEHUALA","estado":"ACTIVO","correo":"chormazabalc@dts.cl","correoDts":"chormazabalc@dts.cl","correoPersonal":"cristianhch97@gmail.com","telefono":"988768110","area":"DES. SOF","sucursal":"MACUL","fechaAfiliacion":"21-08-2026","claveInicial":"19733","claveActual":"19733","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}},{"rut":"20042025-K","nombre":"VALENTINA CONSTANZA RIVAS LÓPEZ","estado":"ACTIVO","correo":"valentna.rivas@dts.cl","correoDts":"valentna.rivas@dts.cl","correoPersonal":"valentina.ri1998@gmail.com","telefono":"936211254","area":"VENTAS","sucursal":"MACUL","fechaAfiliacion":"24-08-2026","claveInicial":"20042","claveActual":"20042","periodos":{},"resumen":{"2024":{"pagadas":0,"total":0,"monto":0},"2025":{"pagadas":0,"total":0,"monto":0},"2026":{"pagadas":0,"total":0,"monto":0}}}];
+
     let sociosCargados = [];
+    let socioActual = null;
+    let periodoActivo = "2026";
+    let estadoCuotaFiltro = "Todos";
+    let categoriaActiva = "Todos";
+    let docSearchQuery = "";
     let portalData = {
       avisos: [],
       asambleas: [],
       documentos: []
     };
-    let categoriaActiva = "Todos";
+
+    function normalizarRut(valor) {
+      return (valor || "")
+        .replace(/\./g, "")
+        .replace(/\s+/g, "")
+        .toUpperCase()
+        .trim();
+    }
+
+    function validarFormatoRutConGuion(rut) {
+      return /^[0-9]{7,8}-[0-9K]$/.test(rut);
+    }
+
+    function obtenerPrimerosCincoDigitos(rut) {
+      const cuerpo = rut.split("-")[0] || "";
+      return cuerpo.slice(0, 5);
+    }
+
+    function formatCLP(num) {
+      return new Intl.NumberFormat("es-CL", {
+        style: "currency",
+        currency: "CLP",
+        maximumFractionDigits: 0
+      }).format(num || 0);
+    }
+
+    function obtenerClavesPersonalizadas() {
+      try {
+        return JSON.parse(localStorage.getItem("dts_claves_socios") || "{}");
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function guardarClavePersonalizada(rut, nuevaClave) {
+      const mapa = obtenerClavesPersonalizadas();
+      mapa[rut] = nuevaClave;
+      localStorage.setItem("dts_claves_socios", JSON.stringify(mapa));
+    }
+
+    function obtenerContactosPersonalizados() {
+      try {
+        return JSON.parse(localStorage.getItem("dts_contactos_socios") || "{}");
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function guardarContactoPersonalizado(rut, datosContacto) {
+      const mapa = obtenerContactosPersonalizados();
+      mapa[rut] = datosContacto;
+      localStorage.setItem("dts_contactos_socios", JSON.stringify(mapa));
+    }
+
+    function obtenerClaveEfectiva(socio) {
+      const mapa = obtenerClavesPersonalizadas();
+      return mapa[socio.rut] || socio.claveActual || socio.claveInicial || obtenerPrimerosCincoDigitos(socio.rut);
+    }
 
     function parseCSV(text) {
       const rows = [];
@@ -677,9 +1050,18 @@
       }
 
       if (rows.length < 2) return [];
-      const headers = rows[0].map((h) => h.replace(/^\uFEFF/, "").trim());
+      let headerIdx = 0;
+      const knownCols = new Set(["RUT", "PERIODO", "PERÍODO", "MES", "MONTO", "ESTADO PAGO", "ESTADO", "OBSERVACION", "OBSERVACIÓN", "FECHA", "CATEGORIA", "TITULO", "RESUMEN", "PUNTOSCLAVE", "URLDRIVE", "TIPO", "DESCRIPCION", "NOMBRE COMPLETO", "CORREO", "TELEFONO", "CORREO PERSONAL", "CORREO DTS"]);
+      for (let rIdx = 0; rIdx < Math.min(rows.length, 6); rIdx++) {
+        const matches = rows[rIdx].filter((c) => knownCols.has(c.replace(/^\uFEFF/, "").trim().toUpperCase())).length;
+        if (matches >= 2) {
+          headerIdx = rIdx;
+          break;
+        }
+      }
+      const headers = rows[headerIdx].map((h) => h.replace(/^\uFEFF/, "").trim());
       return rows
-        .slice(1)
+        .slice(headerIdx + 1)
         .filter((r) => r.some((cell) => cell !== ""))
         .map((r) => {
           const obj = {};
@@ -700,79 +1082,158 @@
       return parseCSV(csvText);
     }
 
-    function normalizarRut(valor) {
-      return (valor || "")
-        .replace(/\./g, "")
-        .replace(/\s+/g, "")
-        .toUpperCase()
-        .trim();
-    }
-
-    function validarFormatoRutConGuion(rut) {
-      return /^[0-9]{7,8}-[0-9K]$/.test(rut);
-    }
-
-    function obtenerPrimerosCincoDigitos(rut) {
-      const cuerpo = rut.split("-")[0] || "";
-      return cuerpo.slice(0, 5);
-    }
-
-    const loginScreen = document.getElementById("loginScreen");
-    const portalScreen = document.getElementById("portalScreen");
-    const loginForm = document.getElementById("loginForm");
-    const loginBtn = document.getElementById("loginBtn");
-    const rutInput = document.getElementById("rutInput");
-    const passInput = document.getElementById("passInput");
-    const statusNote = document.getElementById("statusNote");
-    const errorMsg = document.getElementById("errorMsg");
-    const socioBadge = document.getElementById("socioBadge");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const refreshBtn = document.getElementById("refreshBtn");
-
-    function mostrarError(texto) {
-      errorMsg.textContent = texto;
-      errorMsg.style.display = "block";
-    }
-
-    function ocultarError() {
-      errorMsg.textContent = "";
-      errorMsg.style.display = "none";
+    async function enviarSincronizacionNube(payload) {
+      if (!APPS_SCRIPT_SYNC_URL) return false;
+      try {
+        await fetch(APPS_SCRIPT_SYNC_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        return true;
+      } catch (e) {
+        return false;
+      }
     }
 
     async function cargarSocios() {
+      const loginBtn = document.getElementById("loginBtn");
+      const statusNote = document.getElementById("statusNote");
       loginBtn.disabled = true;
-      statusNote.textContent = "Cargando nómina de socios desde Google Sheets...";
+
+      const contactosLocales = obtenerContactosPersonalizados();
+      sociosCargados = SOCIOS_BASE.map((s) => {
+        const loc = contactosLocales[s.rut] || {};
+        const correoDts = loc.correoDts !== undefined ? loc.correoDts : s.correoDts;
+        const correoPersonal = loc.correoPersonal !== undefined ? loc.correoPersonal : s.correoPersonal;
+        const telefono = loc.telefono !== undefined ? loc.telefono : s.telefono;
+        const correo = correoDts || correoPersonal || s.correo || "";
+        return {
+          ...s,
+          correoDts,
+          correoPersonal,
+          telefono,
+          correo
+        };
+      });
+
       try {
         const rows = await fetchSheetCSV(SHEET_URLS.socios);
-        sociosCargados = rows
-          .map((r) => ({
-            rut: normalizarRut(r["RUT"] || ""),
-            nombre: r["Nombre Completo"] || r["Nombre"] || "Socio Sindicato DTS",
-            estado: (r["Estado"] || "ACTIVO").toUpperCase()
-          }))
-          .filter((s) => validarFormatoRutConGuion(s.rut) && s.estado === "ACTIVO");
+        if (rows.length > 0) {
+          const mapaSheet = new Map();
+          rows.forEach((r) => {
+            const rut = normalizarRut(r["RUT"] || "");
+            const estado = (r["Estado"] || "ACTIVO").toUpperCase();
+            if (validarFormatoRutConGuion(rut) && estado === "ACTIVO") {
+              mapaSheet.set(rut, {
+                nombre: r["Nombre Completo"] || r["Nombre"] || "",
+                correo: r["Correo"] || "",
+                correoDts: r["Correo DTS"] || "",
+                correoPersonal: r["Correo Personal"] || "",
+                telefono: r["Telefono"] || r["Teléfono"] || "",
+                area: r["Area"] || r["Área"] || "",
+                sucursal: r["Sucursal"] || "",
+                claveSheet: (r["Clave Actual"] || r["Clave"] || "").trim()
+              });
+            }
+          });
 
-        statusNote.textContent = `Nómina sincronizada (${sociosCargados.length} socios activos).`;
+          if (mapaSheet.size > 0) {
+            sociosCargados = sociosCargados.map((s) => {
+              const extra = mapaSheet.get(s.rut);
+              if (!extra) return s;
+              const loc = contactosLocales[s.rut] || {};
+              const correoDts = loc.correoDts || extra.correoDts || s.correoDts;
+              const correoPersonal = loc.correoPersonal || extra.correoPersonal || s.correoPersonal;
+              const telefono = loc.telefono || extra.telefono || s.telefono;
+              const correo = loc.correo || extra.correo || correoDts || correoPersonal || s.correo;
+              return {
+                ...s,
+                nombre: extra.nombre || s.nombre,
+                correo,
+                correoDts,
+                correoPersonal,
+                telefono,
+                area: extra.area || s.area,
+                sucursal: extra.sucursal || s.sucursal,
+                claveActual: extra.claveSheet || s.claveActual
+              };
+            });
+          }
+        }
+        statusNote.textContent = `Nómina lista (${sociosCargados.length} socios activos · períodos 2024–2026).`;
       } catch (err) {
-        statusNote.textContent = "Revisa que la pestaña Socios esté publicada en la web (.csv).";
-        mostrarError("No se pudo conectar con la planilla de socios en Google Sheets.");
+        statusNote.textContent = `Nómina local lista (${sociosCargados.length} socios activos).`;
       } finally {
         loginBtn.disabled = false;
       }
     }
 
+    function aplicarCuotasCSV(rows) {
+      if (!Array.isArray(rows) || rows.length === 0) return;
+      const agrupado = new Map();
+
+      rows.forEach((r) => {
+        const rut = normalizarRut(r["RUT"] || "");
+        const periodo = String(r["Periodo"] || r["Período"] || "").trim();
+        const mes = String(r["Mes"] || "").trim();
+        if (!validarFormatoRutConGuion(rut) || !periodo || !mes) return;
+
+        const rawMonto = String(r["Monto"] || "0").replace(/[^0-9.-]/g, "");
+        const monto = Number.isFinite(parseFloat(rawMonto)) ? Math.round(parseFloat(rawMonto)) : 0;
+        const estadoRaw = String(r["Estado Pago"] || r["Estado"] || "").trim().toUpperCase();
+        let estado = estadoRaw || (monto > 0 ? "PAGADA" : "PENDIENTE");
+        if (estado === "PAGADO") estado = "PAGADA";
+        if (estado === "NO PAGADO") estado = "NO PAGADA";
+        const obs = String(r["Observacion"] || r["Observación"] || (estado === "PAGADA" ? "Cuota registrada" : "Sin registro")).trim();
+
+        if (!agrupado.has(rut)) agrupado.set(rut, {});
+        const porPeriodo = agrupado.get(rut);
+        if (!porPeriodo[periodo]) porPeriodo[periodo] = [];
+        porPeriodo[periodo].push({ mes, monto, estado, obs });
+      });
+
+      if (agrupado.size === 0) return;
+
+      sociosCargados = sociosCargados.map((s) => {
+        const nuevosPeriodos = agrupado.get(s.rut);
+        if (!nuevosPeriodos) return s;
+        const resumenActualizado = { ...(s.resumen || {}) };
+        Object.keys(nuevosPeriodos).forEach((per) => {
+          const items = nuevosPeriodos[per] || [];
+          const pagadas = items.filter((x) => x.estado === "PAGADA").length;
+          const total = items.length;
+          const montoTotal = items.filter((x) => x.estado === "PAGADA").reduce((acc, x) => acc + (x.monto || 0), 0);
+          resumenActualizado[per] = { pagadas, total, monto: montoTotal };
+        });
+        const updated = {
+          ...s,
+          periodos: { ...(s.periodos || {}), ...nuevosPeriodos },
+          resumen: resumenActualizado
+        };
+        if (socioActual && socioActual.rut === s.rut) {
+          socioActual = updated;
+        }
+        return updated;
+      });
+    }
+
     async function cargarContenidoPortal() {
       const stamp = new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" });
+      document.getElementById("syncStatusCuotas").textContent = `Actualizado · ${stamp}`;
       document.getElementById("syncStatusAvisos").textContent = `Sincronizado · ${stamp}`;
       document.getElementById("syncStatusAsambleas").textContent = `Sincronizado · ${stamp}`;
       document.getElementById("syncStatusDocumentos").textContent = `Sincronizado · ${stamp}`;
 
       try {
-        const [avisosRows, asambleasRows, docsRows] = await Promise.all([
+        const [cuotasRows, avisosRows, asambleasRows, docsRows] = await Promise.all([
+          SHEET_URLS.cuotas ? fetchSheetCSV(SHEET_URLS.cuotas).catch(() => []) : Promise.resolve([]),
           fetchSheetCSV(SHEET_URLS.avisos),
           fetchSheetCSV(SHEET_URLS.asambleas),
           fetchSheetCSV(SHEET_URLS.documentos)
         ]);
+        aplicarCuotasCSV(cuotasRows);
 
         portalData.avisos = avisosRows
           .filter((r) => r["Titulo"] || r["Resumen"])
@@ -816,72 +1277,234 @@
             url: r["UrlDrive"] || "#"
           }))
           .reverse();
-
-        renderPortal();
       } catch (err) {
-        document.getElementById("avisosGrid").innerHTML =
-          `<div class="empty-state">No fue posible cargar las publicaciones desde Google Sheets. Verifica que las pestañas estén publicadas como CSV.</div>`;
+        // Mantiene secciones disponibles aun si alguna pestaña está en proceso de publicación
+      }
+
+      renderPortal();
+    }
+
+    function activarPestana(tabName) {
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.tab === tabName));
+      document.querySelectorAll(".section-panel").forEach((p) => p.classList.toggle("active", p.id === `tab-${tabName}`));
+    }
+
+    function actualizarBannerContacto() {
+      const banner = document.getElementById("missingContactBanner");
+      const desc = document.getElementById("missingContactText");
+      if (!socioActual) {
+        banner.style.display = "none";
+        return;
+      }
+      const faltantes = [];
+      if (!(socioActual.correoPersonal || "").trim()) faltantes.push("correo personal");
+      if (!(socioActual.telefono || "").trim()) faltantes.push("teléfono");
+
+      if (faltantes.length > 0) {
+        desc.textContent = `Aún no tienes registrado tu ${faltantes.join(" ni ")} en la ficha. Complétalo en "Mi Contacto y Clave".`;
+        banner.style.display = "flex";
+      } else {
+        banner.style.display = "none";
       }
     }
 
     function abrirPortal(socio) {
+      socioActual = socio;
       sessionStorage.setItem("dts_socio_rut", socio.rut);
-      socioBadge.textContent = `${socio.nombre} · ${socio.rut}`;
-      loginScreen.style.display = "none";
-      portalScreen.style.display = "block";
+      document.getElementById("socioBadge").textContent = `${socio.nombre} · ${socio.rut}`;
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("portalScreen").style.display = "block";
       cargarContenidoPortal();
     }
 
-    loginForm.addEventListener("submit", async (e) => {
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      ocultarError();
+      const errorMsg = document.getElementById("errorMsg");
+      errorMsg.style.display = "none";
 
       if (sociosCargados.length === 0) {
         await cargarSocios();
       }
 
-      const rutNormalizado = normalizarRut(rutInput.value);
-      const claveIngresada = passInput.value.trim();
+      const rutNormalizado = normalizarRut(document.getElementById("rutInput").value);
+      const claveIngresada = document.getElementById("passInput").value.trim();
 
       if (!validarFormatoRutConGuion(rutNormalizado)) {
-        mostrarError("Ingresa el RUT sin puntos y con guion (ejemplo: 20951867-8).");
-        return;
-      }
-
-      const claveEsperada = obtenerPrimerosCincoDigitos(rutNormalizado);
-      if (claveIngresada !== claveEsperada) {
-        mostrarError("La clave debe corresponder a los primeros 5 dígitos del RUT.");
+        errorMsg.textContent = "Ingresa el RUT sin puntos y con guion (ejemplo: 20951867-8).";
+        errorMsg.style.display = "block";
         return;
       }
 
       const socioEncontrado = sociosCargados.find((s) => s.rut === rutNormalizado);
       if (!socioEncontrado) {
-        mostrarError("El RUT ingresado no figura activo en la nómina de socios.");
+        errorMsg.textContent = "El RUT ingresado no figura activo en la nómina de socios.";
+        errorMsg.style.display = "block";
+        return;
+      }
+
+      const claveCorrecta = obtenerClaveEfectiva(socioEncontrado);
+      if (claveIngresada !== claveCorrecta) {
+        errorMsg.textContent = "Clave incorrecta. Si no la has cambiado, son los primeros 5 dígitos de tu RUT.";
+        errorMsg.style.display = "block";
         return;
       }
 
       abrirPortal(socioEncontrado);
     });
 
-    logoutBtn.addEventListener("click", () => {
+    document.getElementById("logoutBtn").addEventListener("click", () => {
       sessionStorage.removeItem("dts_socio_rut");
-      passInput.value = "";
-      portalScreen.style.display = "none";
-      loginScreen.style.display = "flex";
+      socioActual = null;
+      document.getElementById("passInput").value = "";
+      document.getElementById("portalScreen").style.display = "none";
+      document.getElementById("loginScreen").style.display = "flex";
     });
 
-    refreshBtn.addEventListener("click", () => {
+    document.getElementById("refreshBtn").addEventListener("click", () => {
       cargarContenidoPortal();
     });
 
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
-        document.querySelectorAll(".section-panel").forEach((p) => p.classList.remove("active"));
+    document.getElementById("goToPerfilBtn").addEventListener("click", () => {
+      activarPestana("perfil");
+    });
 
-        btn.classList.add("active");
-        document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => activarPestana(btn.dataset.tab));
+    });
+
+    document.querySelectorAll("[data-estado-cuota]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        estadoCuotaFiltro = btn.dataset.estadoCuota;
+        document.querySelectorAll("[data-estado-cuota]").forEach((b) => b.classList.toggle("active", b === btn));
+        renderCuotas();
       });
+    });
+
+    document.getElementById("docSearchInput").addEventListener("input", (e) => {
+      docSearchQuery = e.target.value.trim().toLowerCase();
+      renderDocumentos();
+    });
+
+    function renderCuotas() {
+      if (!socioActual) return;
+      const periodosDisp = ["2024", "2025", "2026", "Todos"];
+      const chipsEl = document.getElementById("periodoChips");
+      const resumenEl = document.getElementById("cuotasResumen");
+      const tablaWrap = document.getElementById("cuotasTablaWrap");
+
+      chipsEl.innerHTML = periodosDisp
+        .map((per) => {
+          const label = per === "Todos" ? "Todos los períodos (2024–2026)" : `Período ${per}`;
+          return `<button type="button" class="filter-chip ${per === periodoActivo ? "active" : ""}" data-per="${per}">${label}</button>`;
+        })
+        .join("");
+
+      chipsEl.querySelectorAll(".filter-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          periodoActivo = chip.dataset.per;
+          renderCuotas();
+        });
+      });
+
+      const r24 = socioActual.resumen["2024"] || { pagadas: 0, total: 0, monto: 0 };
+      const r25 = socioActual.resumen["2025"] || { pagadas: 0, total: 0, monto: 0 };
+      const r26 = socioActual.resumen["2026"] || { pagadas: 0, total: 0, monto: 0 };
+      const totalPagadas = r24.pagadas + r25.pagadas + r26.pagadas;
+      const totalMonto = r24.monto + r25.monto + r26.monto;
+
+      resumenEl.innerHTML = `
+        <div class="summary-box">
+          <div class="summary-label">Período 2024 (Jul–Dic)</div>
+          <div class="summary-val">${r24.pagadas} / ${r24.total} pagadas</div>
+          <div class="summary-sub">Acumulado: ${formatCLP(r24.monto)}</div>
+        </div>
+        <div class="summary-box">
+          <div class="summary-label">Período 2025</div>
+          <div class="summary-val">${r25.pagadas} / ${r25.total} pagadas</div>
+          <div class="summary-sub">Acumulado: ${formatCLP(r25.monto)}</div>
+        </div>
+        <div class="summary-box">
+          <div class="summary-label">Período 2026</div>
+          <div class="summary-val">${r26.pagadas} / ${r26.total} pagadas</div>
+          <div class="summary-sub">Acumulado: ${formatCLP(r26.monto)}</div>
+        </div>
+        <div class="summary-box">
+          <div class="summary-label">Total Histórico</div>
+          <div class="summary-val">${totalPagadas} cuotas pagadas</div>
+          <div class="summary-sub">Total abonado: ${formatCLP(totalMonto)}</div>
+        </div>
+      `;
+
+      let filas = [];
+      const periodosAConsultar = periodoActivo === "Todos" ? ["2024", "2025", "2026"] : [periodoActivo];
+      periodosAConsultar.forEach((per) => {
+        const items = socioActual.periodos[per] || [];
+        items.forEach((it) => {
+          filas.push({ periodo: per, ...it });
+        });
+      });
+
+      if (estadoCuotaFiltro !== "Todos") {
+        filas = filas.filter((f) => f.estado === estadoCuotaFiltro);
+      }
+
+      if (filas.length === 0) {
+        tablaWrap.innerHTML = `<div class="empty-state">No hay registros de cuotas para el filtro seleccionado.</div>`;
+        return;
+      }
+
+      tablaWrap.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Mes / Columna</th>
+              <th>Estado</th>
+              <th>Monto</th>
+              <th>Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filas
+              .map((f) => {
+                let badgeClass = "";
+                if (f.estado === "PENDIENTE") badgeClass = "pendiente";
+                else if (f.estado === "NO PAGADA") badgeClass = "nopagada";
+                else if (f.estado === "NO APLICA") badgeClass = "info";
+                return `
+                  <tr>
+                    <td><strong>${f.periodo}</strong></td>
+                    <td>${f.mes}</td>
+                    <td><span class="badge ${badgeClass}">${f.estado}</span></td>
+                    <td>${f.estado === "PAGADA" ? formatCLP(f.monto) : "—"}</td>
+                    <td>${f.obs}</td>
+                  </tr>
+                `;
+              })
+              .join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    document.getElementById("copyCuotasBtn").addEventListener("click", async () => {
+      if (!socioActual) return;
+      const r24 = socioActual.resumen["2024"] || { pagadas: 0, total: 0, monto: 0 };
+      const r25 = socioActual.resumen["2025"] || { pagadas: 0, total: 0, monto: 0 };
+      const r26 = socioActual.resumen["2026"] || { pagadas: 0, total: 0, monto: 0 };
+      const texto = [
+        `Sindicato DTS — Resumen de Cuotas`,
+        `Socio: ${socioActual.nombre} (${socioActual.rut})`,
+        `2024: ${r24.pagadas}/${r24.total} pagadas (${formatCLP(r24.monto)})`,
+        `2025: ${r25.pagadas}/${r25.total} pagadas (${formatCLP(r25.monto)})`,
+        `2026: ${r26.pagadas}/${r26.total} pagadas (${formatCLP(r26.monto)})`
+      ].join("\n");
+      try {
+        await navigator.clipboard.writeText(texto);
+        document.getElementById("copyCuotasFeedback").textContent = "Resumen copiado.";
+      } catch (e) {
+        document.getElementById("copyCuotasFeedback").textContent = "No se pudo copiar automáticamente.";
+      }
     });
 
     function renderAvisos() {
@@ -895,20 +1518,10 @@
       }
 
       const categorias = ["Todos", ...new Set(portalData.avisos.map((a) => a.categoria))];
-      if (!categorias.includes(categoriaActiva)) {
-        categoriaActiva = "Todos";
-      }
+      if (!categorias.includes(categoriaActiva)) categoriaActiva = "Todos";
 
       filtersContainer.innerHTML = categorias
-        .map(
-          (cat) => `
-          <button
-            type="button"
-            class="filter-chip ${cat === categoriaActiva ? "active" : ""}"
-            data-cat="${cat}"
-          >${cat}</button>
-        `
-        )
+        .map((cat) => `<button type="button" class="filter-chip ${cat === categoriaActiva ? "active" : ""}" data-cat="${cat}">${cat}</button>`)
         .join("");
 
       filtersContainer.querySelectorAll(".filter-chip").forEach((chip) => {
@@ -985,12 +1598,21 @@
 
     function renderDocumentos() {
       const grid = document.getElementById("documentosGrid");
-      if (portalData.documentos.length === 0) {
-        grid.innerHTML = `<div class="empty-state">Aún no hay documentos cargados en la planilla.</div>`;
+      const filtrados = docSearchQuery
+        ? portalData.documentos.filter(
+            (d) =>
+              (d.titulo || "").toLowerCase().includes(docSearchQuery) ||
+              (d.tipo || "").toLowerCase().includes(docSearchQuery) ||
+              (d.descripcion || "").toLowerCase().includes(docSearchQuery)
+          )
+        : portalData.documentos;
+
+      if (filtrados.length === 0) {
+        grid.innerHTML = `<div class="empty-state">No hay documentos que coincidan con la búsqueda.</div>`;
         return;
       }
 
-      grid.innerHTML = portalData.documentos
+      grid.innerHTML = filtrados
         .map(
           (doc) => `
           <article class="card">
@@ -1008,10 +1630,187 @@
         .join("");
     }
 
+    function renderPerfil() {
+      if (!socioActual) return;
+      actualizarBannerContacto();
+
+      const tieneCorreoPer = Boolean((socioActual.correoPersonal || "").trim());
+      const tieneCorreoDts = Boolean((socioActual.correoDts || "").trim());
+      const tieneTel = Boolean((socioActual.telefono || "").trim());
+
+      const box = document.getElementById("datosSocioBox");
+      box.innerHTML = `
+        <div class="info-row"><span class="info-label">Nombre</span><span class="info-val">${socioActual.nombre}</span></div>
+        <div class="info-row"><span class="info-label">RUT</span><span class="info-val">${socioActual.rut}</span></div>
+        <div class="info-row">
+          <span class="info-label">Correo personal</span>
+          <span class="info-val">${tieneCorreoPer ? socioActual.correoPersonal : '<span class="badge pendiente">No registrado</span>'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Correo DTS</span>
+          <span class="info-val">${tieneCorreoDts ? socioActual.correoDts : '<span class="badge pendiente">No registrado</span>'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Teléfono</span>
+          <span class="info-val">${tieneTel ? socioActual.telefono : '<span class="badge pendiente">No registrado</span>'}</span>
+        </div>
+        <div class="info-row"><span class="info-label">Área / Sucursal</span><span class="info-val">${socioActual.area || "—"} · ${socioActual.sucursal || "—"}</span></div>
+      `;
+
+      document.getElementById("correoPersonalInput").value = socioActual.correoPersonal || "";
+      document.getElementById("correoDtsInput").value = socioActual.correoDts || "";
+      document.getElementById("telefonoInput").value = socioActual.telefono || "";
+
+      document.getElementById("correoPersonalHint").textContent = tieneCorreoPer
+        ? "Ya tienes un correo personal registrado; puedes editarlo si cambió."
+        : "No hay correo personal registrado. Escríbelo para que la directiva pueda contactarte.";
+
+      document.getElementById("telefonoHint").textContent = tieneTel
+        ? "Ya tienes un teléfono registrado; puedes actualizarlo si cambió."
+        : "No hay teléfono registrado. Agrégalo para avisos urgentes o asambleas.";
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!socioActual) return;
+
+      const errEl = document.getElementById("contactErrorMsg");
+      const okEl = document.getElementById("contactSuccessMsg");
+      errEl.style.display = "none";
+      okEl.style.display = "none";
+
+      const per = document.getElementById("correoPersonalInput").value.trim().toLowerCase();
+      const dts = document.getElementById("correoDtsInput").value.trim().toLowerCase();
+      const tel = document.getElementById("telefonoInput").value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (per && !emailRegex.test(per)) {
+        errEl.textContent = "Ingresa un correo personal válido (ej: nombre@correo.cl).";
+        errEl.style.display = "block";
+        return;
+      }
+      if (dts && !emailRegex.test(dts)) {
+        errEl.textContent = "Ingresa un correo DTS válido (ej: socio@dts.cl).";
+        errEl.style.display = "block";
+        return;
+      }
+      if (tel && !/^[+0-9\s()-]{7,20}$/.test(tel)) {
+        errEl.textContent = "Ingresa un teléfono válido (ej: +56912345678 o 912345678).";
+        errEl.style.display = "block";
+        return;
+      }
+
+      const correoPrincipal = dts || per || "";
+      const datosActualizados = {
+        correoPersonal: per,
+        correoDts: dts,
+        telefono: tel,
+        correo: correoPrincipal
+      };
+
+      guardarContactoPersonalizado(socioActual.rut, datosActualizados);
+      socioActual = { ...socioActual, ...datosActualizados };
+      sociosCargados = sociosCargados.map((s) => (s.rut === socioActual.rut ? { ...s, ...datosActualizados } : s));
+
+      await enviarSincronizacionNube({
+        action: "update_contact",
+        rut: socioActual.rut,
+        nombre: socioActual.nombre,
+        correoPersonal: per,
+        correoDts: dts,
+        telefono: tel,
+        correo: correoPrincipal
+      });
+
+      renderPerfil();
+      okEl.textContent = "Datos de contacto guardados correctamente.";
+      okEl.style.display = "block";
+    });
+
+    document.getElementById("copyFichaBtn").addEventListener("click", async () => {
+      if (!socioActual) return;
+      const texto = [
+        `Actualización de Contacto — Sindicato DTS`,
+        `Nombre: ${socioActual.nombre}`,
+        `RUT: ${socioActual.rut}`,
+        `Correo personal: ${socioActual.correoPersonal || "No registrado"}`,
+        `Correo DTS: ${socioActual.correoDts || "No registrado"}`,
+        `Teléfono: ${socioActual.telefono || "No registrado"}`
+      ].join("\n");
+      try {
+        await navigator.clipboard.writeText(texto);
+        document.getElementById("copyFichaFeedback").textContent = "Ficha copiada.";
+      } catch (e) {
+        document.getElementById("copyFichaFeedback").textContent = "No se pudo copiar automáticamente.";
+      }
+    });
+
+    document.getElementById("changePassForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!socioActual) return;
+
+      const errEl = document.getElementById("passErrorMsg");
+      const okEl = document.getElementById("passSuccessMsg");
+      errEl.style.display = "none";
+      okEl.style.display = "none";
+
+      const actualIngresada = document.getElementById("currentPassInput").value.trim();
+      const nuevaClave = document.getElementById("newPassInput").value.trim();
+      const confirmarClave = document.getElementById("confirmPassInput").value.trim();
+
+      const claveVigente = obtenerClaveEfectiva(socioActual);
+      if (actualIngresada !== claveVigente) {
+        errEl.textContent = "La clave actual ingresada no coincide.";
+        errEl.style.display = "block";
+        return;
+      }
+
+      if (nuevaClave.length < 5) {
+        errEl.textContent = "La nueva clave debe tener al menos 5 caracteres.";
+        errEl.style.display = "block";
+        return;
+      }
+
+      if (nuevaClave !== confirmarClave) {
+        errEl.textContent = "La nueva clave y su confirmación no coinciden.";
+        errEl.style.display = "block";
+        return;
+      }
+
+      guardarClavePersonalizada(socioActual.rut, nuevaClave);
+      socioActual.claveActual = nuevaClave;
+      await enviarSincronizacionNube({
+        action: "change_password",
+        rut: socioActual.rut,
+        claveActual: nuevaClave
+      });
+
+      document.getElementById("changePassForm").reset();
+      okEl.textContent = "Tu clave se actualizó correctamente.";
+      okEl.style.display = "block";
+    });
+
+    document.getElementById("resetPassDefaultBtn").addEventListener("click", () => {
+      if (!socioActual) return;
+      const errEl = document.getElementById("passErrorMsg");
+      const okEl = document.getElementById("passSuccessMsg");
+      errEl.style.display = "none";
+      okEl.style.display = "none";
+
+      const claveDefecto = socioActual.claveInicial || obtenerPrimerosCincoDigitos(socioActual.rut);
+      guardarClavePersonalizada(socioActual.rut, claveDefecto);
+      socioActual.claveActual = claveDefecto;
+      document.getElementById("changePassForm").reset();
+      okEl.textContent = `Clave restaurada a los primeros 5 dígitos del RUT (${claveDefecto}).`;
+      okEl.style.display = "block";
+    });
+
     function renderPortal() {
+      renderCuotas();
       renderAvisos();
       renderAsambleas();
       renderDocumentos();
+      renderPerfil();
     }
 
     (async function init() {
