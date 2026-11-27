@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calendario Sindicato DTS</title>
+  <title>Calendario Interactivo — Sindicato DTS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Great+Vibes&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -31,11 +31,11 @@
       background: #eef1f4;
       color: var(--texto);
       min-height: 100vh;
-      padding: 16px 14px 44px;
+      padding: 16px 14px 48px;
     }
 
     .control-bar {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto 14px;
       background: var(--negro);
       color: var(--blanco);
@@ -125,14 +125,14 @@
     }
 
     .calendar-sheet {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       background: var(--blanco);
       border-radius: 14px;
       padding: 32px 34px 36px;
       box-shadow: 0 10px 30px rgba(17, 19, 21, 0.08);
       display: grid;
-      grid-template-columns: 1fr 295px;
+      grid-template-columns: 1fr 320px;
       gap: 30px;
       align-items: stretch;
     }
@@ -210,7 +210,7 @@
     }
 
     .day-cell {
-      min-height: 102px;
+      min-height: 104px;
       border-right: 1px solid #d5dce2;
       border-bottom: 1px solid #d5dce2;
       padding: 8px 9px;
@@ -218,35 +218,36 @@
       flex-direction: column;
       justify-content: space-between;
       background: var(--blanco);
-      position: relative;
-      transition: background 0.14s;
+      cursor: pointer;
+      transition: background 0.14s, box-shadow 0.14s;
+    }
+
+    .day-cell:hover:not(.empty) {
+      background: #f4f8f5;
     }
 
     .day-cell.empty {
       background: #fafbfc;
+      cursor: default;
     }
 
     .day-cell.has-event {
-      background: #f4faf4;
-      cursor: pointer;
+      background: #f2faf2;
     }
 
     .day-cell.has-event:hover {
-      background: #e5f4e6;
-    }
-
-    .day-cell.editable-cell:not(.empty) {
-      cursor: pointer;
-    }
-
-    .day-cell.editable-cell:not(.empty):hover {
-      background: #f0f7f1;
+      background: #e3f3e4;
     }
 
     .day-cell.is-today {
       outline: 2.5px solid var(--verde-dts);
       outline-offset: -2.5px;
       background: #eef8ec;
+    }
+
+    .day-cell.is-selected {
+      background: #e6f3e7;
+      box-shadow: inset 0 0 0 2px var(--negro);
     }
 
     .day-top-row {
@@ -287,7 +288,7 @@
     }
 
     .day-event-label {
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--verde-hoja);
       line-height: 1.22;
@@ -295,13 +296,13 @@
     }
 
     .day-event-label.extra {
-      color: #1f6812;
+      color: var(--verde-oscuro);
     }
 
     .notes-panel {
       border: 2px solid var(--gris-borde);
       border-radius: 2px;
-      padding: 22px 20px;
+      padding: 20px 18px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -311,48 +312,82 @@
 
     .notes-heading {
       text-align: center;
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--negro);
       letter-spacing: 0.24em;
-      margin-bottom: 24px;
+      margin-bottom: 14px;
       padding-left: 0.24em;
       text-transform: uppercase;
+    }
+
+    .selected-day-box {
+      background: #f8fafc;
+      border: 1px solid #dce3ea;
+      border-left: 4px solid var(--verde-dts);
+      border-radius: 8px;
+      padding: 11px 12px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+    }
+
+    .selected-day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-weight: 800;
+      color: var(--negro);
     }
 
     .notes-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .note-item {
-      padding-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 1px dashed #d8e0e6;
+      cursor: pointer;
     }
 
     .note-item:last-child {
       border-bottom: none;
     }
 
+    .note-item.active-note {
+      background: #f4faf4;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
     .note-time {
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 800;
       color: var(--verde-hoja);
       margin-bottom: 3px;
     }
 
     .note-desc {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--verde-hoja);
       line-height: 1.38;
+    }
+
+    .note-meta {
+      font-size: 0.75rem;
+      color: var(--texto-muted);
+      margin-top: 4px;
     }
 
     .note-actions {
       margin-top: 8px;
       display: flex;
       gap: 6px;
+      flex-wrap: wrap;
     }
 
     .btn-mini {
@@ -361,9 +396,15 @@
       padding: 3px 8px;
       border-radius: 5px;
       border: 1px solid #cbd5e1;
-      background: #f8fafc;
+      background: var(--blanco);
       color: var(--negro);
       cursor: pointer;
+    }
+
+    .btn-mini.green {
+      background: var(--verde-dts);
+      border-color: var(--verde-dts);
+      color: var(--blanco);
     }
 
     .btn-mini.danger {
@@ -375,8 +416,8 @@
     .notes-empty {
       text-align: center;
       color: var(--texto-muted);
-      font-size: 0.9rem;
-      margin-top: 32px;
+      font-size: 0.88rem;
+      margin-top: 20px;
       line-height: 1.5;
     }
 
@@ -493,7 +534,7 @@
         background: var(--blanco);
         padding: 0;
       }
-      .control-bar, .note-actions {
+      .control-bar, .note-actions, .selected-day-box .btn-mini {
         display: none !important;
       }
       .calendar-sheet {
@@ -569,6 +610,7 @@
 
     <aside class="notes-panel">
       <h2 class="notes-heading">NOTAS</h2>
+      <div id="selectedDayBox" class="selected-day-box"></div>
       <div id="notesList" class="notes-list"></div>
     </aside>
   </main>
@@ -672,6 +714,8 @@
       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
+    const DIAS_SEMANA_ES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
     const EVENTOS_BASE = [
       {
         id: "CAL-001",
@@ -748,6 +792,7 @@
     let directivaActiva = null;
     let vistaYear = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_YEAR : 2026;
     let vistaMonth = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_MONTH : 10;
+    let diaSeleccionado = (HOY_YEAR === vistaYear && HOY_MONTH === vistaMonth) ? HOY_DAY : 1;
 
     function normalizarRut(valor) {
       return (valor || "").replace(/\./g, "").replace(/\s+/g, "").toUpperCase().trim();
@@ -797,17 +842,13 @@
           } else if (ch === ",") {
             row.push(field.trim());
             field = "";
-          } else if (ch === "
-" && next === "
-") {
+          } else if (ch === "\r" && next === "\n") {
             row.push(field.trim());
             rows.push(row);
             row = [];
             field = "";
             i++;
-          } else if (ch === "
-" || ch === "
-") {
+          } else if (ch === "\n" || ch === "\r") {
             row.push(field.trim());
             rows.push(row);
             row = [];
@@ -826,13 +867,13 @@
       let headerIdx = 0;
       const known = new Set(["RUT", "ROL", "PUEDE EDITAR", "ID", "FECHA", "HORA", "TITULOCORTO", "NOTADETALLE", "TIPO", "ESTADO"]);
       for (let r = 0; r < Math.min(rows.length, 6); r++) {
-        const matches = rows[r].filter((c) => known.has(c.replace(/^﻿/, "").trim().toUpperCase())).length;
+        const matches = rows[r].filter((c) => known.has(c.replace(/^\uFEFF/, "").trim().toUpperCase())).length;
         if (matches >= 2) {
           headerIdx = r;
           break;
         }
       }
-      const headers = rows[headerIdx].map((h) => h.replace(/^﻿/, "").trim());
+      const headers = rows[headerIdx].map((h) => h.replace(/^\uFEFF/, "").trim());
       return rows.slice(headerIdx + 1).filter((r) => r.some((c) => c !== "")).map((r) => {
         const obj = {};
         headers.forEach((h, idx) => (obj[h] = (r[idx] || "").trim()));
@@ -849,13 +890,13 @@
 
     function guardarLocal() {
       try {
-        localStorage.setItem("dts_calendario_eventos_v2", JSON.stringify(eventos));
+        localStorage.setItem("dts_calendario_eventos_v3", JSON.stringify(eventos));
       } catch (e) {}
     }
 
     function cargarLocal() {
       try {
-        const raw = localStorage.getItem("dts_calendario_eventos_v2");
+        const raw = localStorage.getItem("dts_calendario_eventos_v3");
         if (!raw) return null;
         const parsed = JSON.parse(raw);
         return Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
@@ -895,6 +936,43 @@
       sel.innerHTML = opciones
         .map((o) => `<option value="${o.year}-${o.month}" ${o.year === vistaYear && o.month === vistaMonth ? "selected" : ""}>${o.label}</option>`)
         .join("");
+    }
+
+    function renderPanelDiaSeleccionado(porDia) {
+      const box = document.getElementById("selectedDayBox");
+      const daysInMonth = new Date(vistaYear, vistaMonth + 1, 0).getDate();
+      if (!diaSeleccionado || diaSeleccionado > daysInMonth) diaSeleccionado = 1;
+
+      const fechaObj = new Date(vistaYear, vistaMonth, diaSeleccionado);
+      const nomDia = DIAS_SEMANA_ES[fechaObj.getDay()];
+      const fechaStr = `${String(diaSeleccionado).padStart(2, "0")}-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
+      const evsDia = porDia.get(diaSeleccionado) || [];
+
+      box.innerHTML = `
+        <div class="selected-day-header">
+          <span>${nomDia} ${diaSeleccionado} de ${MESES_SCRIPT[vistaMonth]} ${vistaYear}</span>
+          ${directivaActiva ? `<button type="button" class="btn-mini green" id="addForSelectedDayBtn">+ Nota aquí</button>` : ""}
+        </div>
+        ${
+          evsDia.length > 0
+            ? evsDia
+                .map(
+                  (ev) => `
+              <div style="margin-top:6px;">
+                <strong>${ev.hora ? ev.hora + " hrs · " : ""}${ev.tituloCorto}</strong>
+                <div style="color:var(--texto-muted); font-size:0.82rem;">${ev.notaDetalle}</div>
+              </div>
+            `
+                )
+                .join("")
+            : `<div style="color:var(--texto-muted); font-size:0.82rem;">Sin eventos programados este día${directivaActiva ? ". Haz clic en '+ Nota aquí' para agregar uno." : "."}</div>`
+        }
+      `;
+
+      const addSelBtn = document.getElementById("addForSelectedDayBtn");
+      if (addSelBtn) {
+        addSelBtn.addEventListener("click", () => abrirModalEvento(null, fechaStr));
+      }
     }
 
     function renderCalendario() {
@@ -941,11 +1019,11 @@
         const dayEvents = porDia.get(dayNum) || [];
         const hasEvent = dayEvents.length > 0;
         const isToday = vistaYear === HOY_YEAR && vistaMonth === HOY_MONTH && dayNum === HOY_DAY;
-        const editClass = directivaActiva ? "editable-cell" : "";
+        const isSelected = dayNum === diaSeleccionado;
         const fechaFull = `${String(dayNum).padStart(2, "0")}-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
 
         cellsHTML += `
-          <div class="day-cell ${hasEvent ? "has-event" : ""} ${isToday ? "is-today" : ""} ${editClass}" data-fecha="${fechaFull}">
+          <div class="day-cell ${hasEvent ? "has-event" : ""} ${isToday ? "is-today" : ""} ${isSelected ? "is-selected" : ""}" data-day="${dayNum}" data-fecha="${fechaFull}">
             <div class="day-top-row">
               <span class="day-num">${dayNum}</span>
               ${isToday ? `<span class="today-tag">Hoy</span>` : ""}
@@ -965,29 +1043,28 @@
 
       grid.querySelectorAll(".day-cell:not(.empty)").forEach((cell) => {
         cell.addEventListener("click", () => {
-          if (!directivaActiva) return;
-          const fecha = cell.dataset.fecha;
-          const p = parseFechaDDMMYYYY(fecha);
-          const evs = p ? porDia.get(p.day) || [] : [];
-          if (evs.length === 1) {
-            abrirModalEvento(evs[0]);
-          } else {
-            abrirModalEvento(null, fecha);
-          }
+          const clickedDay = parseInt(cell.dataset.day, 10);
+          diaSeleccionado = clickedDay;
+          renderCalendario();
         });
       });
+
+      renderPanelDiaSeleccionado(porDia);
 
       if (eventosMes.length === 0) {
         notesList.innerHTML = `<div class="notes-empty">Sin actividades ni asambleas registradas para ${MESES_SCRIPT[vistaMonth]} ${vistaYear}.</div>`;
       } else {
         notesList.innerHTML = eventosMes
           .map((ev) => {
+            const p = parseFechaDDMMYYYY(ev.fecha);
             const ddmm = formatDDMM(ev.fecha);
             const horaTxt = ev.hora ? ` - ${ev.hora} hrs` : "";
+            const isActive = p && p.day === diaSeleccionado;
             return `
-              <div class="note-item">
+              <div class="note-item ${isActive ? "active-note" : ""}" data-jump-day="${p ? p.day : ""}">
                 <div class="note-time">${ddmm}${horaTxt}</div>
                 <div class="note-desc">${ev.notaDetalle}</div>
+                <div class="note-meta">${ev.tipo || "Asamblea"} · ${ev.estado || "PROGRAMADA"}</div>
                 ${
                   directivaActiva
                     ? `
@@ -1002,6 +1079,17 @@
             `;
           })
           .join("");
+
+        notesList.querySelectorAll(".note-item[data-jump-day]").forEach((item) => {
+          item.addEventListener("click", (e) => {
+            if (e.target.closest("button")) return;
+            const d = parseInt(item.dataset.jumpDay, 10);
+            if (d) {
+              diaSeleccionado = d;
+              renderCalendario();
+            }
+          });
+        });
 
         if (directivaActiva) {
           notesList.querySelectorAll("[data-edit-id]").forEach((btn) => {
@@ -1060,7 +1148,6 @@
         eventos = [...locales];
       }
 
-      // Render inmediato para que nunca aparezca vacío
       verificarSesionDirectiva();
       renderCalendario();
 
@@ -1136,7 +1223,7 @@
       } else {
         document.getElementById("eventModalTitle").textContent = "Agregar Evento al Calendario";
         document.getElementById("editEventId").value = "";
-        document.getElementById("evFechaInput").value = fechaPrefill || `15-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
+        document.getElementById("evFechaInput").value = fechaPrefill || `${String(diaSeleccionado || 15).padStart(2, "0")}-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
         document.getElementById("evHoraInput").value = "19:00";
         document.getElementById("evTipoInput").value = "Asamblea Ordinaria";
         document.getElementById("evTituloInput").value = "";
@@ -1152,6 +1239,7 @@
         vistaMonth = 11;
         vistaYear--;
       }
+      diaSeleccionado = 1;
       renderCalendario();
     });
 
@@ -1161,12 +1249,14 @@
         vistaMonth = 0;
         vistaYear++;
       }
+      diaSeleccionado = 1;
       renderCalendario();
     });
 
     document.getElementById("todayBtn").addEventListener("click", () => {
       vistaYear = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_YEAR : 2026;
       vistaMonth = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_MONTH : 10;
+      diaSeleccionado = HOY_DAY;
       renderCalendario();
     });
 
@@ -1174,6 +1264,7 @@
       const [y, m] = e.target.value.split("-").map(Number);
       vistaYear = y;
       vistaMonth = m;
+      diaSeleccionado = 1;
       renderCalendario();
     });
 
@@ -1273,6 +1364,7 @@
       guardarLocal();
       vistaYear = parsed.year;
       vistaMonth = parsed.month;
+      diaSeleccionado = parsed.day;
       document.getElementById("eventModal").classList.remove("open");
       renderCalendario();
     });
