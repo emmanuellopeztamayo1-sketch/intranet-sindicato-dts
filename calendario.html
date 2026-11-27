@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendario Sindicato DTS — 2026 / 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Great+Vibes&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --verde-hoja: #428847;
+      --verde-dts: #2c8c1a;
+      --verde-oscuro: #1f6812;
+      --verde-suave: #eef7ec;
+      --negro: #111315;
+      --gris-borde: #1f2428;
+      --gris-suave: #f5f7f9;
+      --texto: #1e2328;
+      --texto-muted: #5a646e;
+      --blanco: #ffffff;
+      --alerta-bg: #fef3c7;
+      --alerta-txt: #92400e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #eef1f4;
+      color: var(--texto);
+      min-height: 100vh;
+      padding: 18px 16px 48px;
+    }
+
+    /* BARRA DE CONTROL SUPERIOR */
+    .control-bar {
+      max-width: 1280px;
+      margin: 0 auto 16px;
+      background: var(--negro);
+      color: var(--blanco);
+      border-bottom: 4px solid var(--verde-dts);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .control-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-pill {
+      font-weight: 800;
+      font-size: 0.96rem;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--verde-dts);
+      display: inline-block;
+    }
+
+    .nav-month-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-bar {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--blanco);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-bar:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-bar.green {
+      background: var(--verde-dts);
+      border-color: var(--verde-dts);
+    }
+
+    .btn-bar.green:hover {
+      background: var(--verde-oscuro);
+    }
+
+    .month-select {
+      background: var(--blanco);
+      color: var(--negro);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .control-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .status-badge {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+    }
+
+    /* HOJA DE CALENDARIO ESTILO PDF 2027 */
+    .calendar-sheet {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: var(--blanco);
+      border-radius: 14px;
+      padding: 34px 36px 38px;
+      box-shadow: 0 10px 30px rgba(17, 19, 21, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .cal-main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cal-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .month-title-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .month-title {
+      font-family: "Archivo Black", "Open Sans", sans-serif;
+      font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+      font-weight: 900;
+      color: var(--negro);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .month-script-overlay {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2rem, 3.6vw, 3.1rem);
+      color: var(--verde-hoja);
+      margin-left: -12px;
+      margin-top: -10px;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.92;
+    }
+
+    .year-title {
+      font-family: "Archivo Black", "Open Sans", sans-serif;
+      font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+      font-weight: 900;
+      color: var(--negro);
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    /* GRILLA 7 COLUMNAS */
+    .weekdays-row {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .weekday-label {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--negro);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 2px;
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      border-top: 1px solid #d5dce2;
+      border-left: 1px solid #d5dce2;
+    }
+
+    .day-cell {
+      min-height: 102px;
+      border-right: 1px solid #d5dce2;
+      border-bottom: 1px solid #d5dce2;
+      padding: 8px 9px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--blanco);
+      position: relative;
+      transition: background 0.14s;
+    }
+
+    .day-cell.empty {
+      background: #fafbfc;
+    }
+
+    .day-cell.has-event {
+      background: #f4faf4;
+      cursor: pointer;
+    }
+
+    .day-cell.has-event:hover {
+      background: #e5f4e6;
+    }
+
+    .day-cell.editable-cell:not(.empty) {
+      cursor: pointer;
+    }
+
+    .day-cell.editable-cell:not(.empty):hover {
+      background: #f0f7f1;
+    }
+
+    .day-num {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--negro);
+      line-height: 1.1;
+    }
+
+    .day-cell.has-event .day-num {
+      font-weight: 800;
+      color: var(--verde-oscuro);
+    }
+
+    .day-events {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .day-event-label {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--verde-hoja);
+      line-height: 1.22;
+      word-break: break-word;
+    }
+
+    .day-event-label.extra {
+      color: #1f6812;
+    }
+
+    .day-event-label.otros {
+      color: #2b5b33;
+    }
+
+    /* PANEL LATERAL NOTAS (ESTILO RECTANGULO PDF) */
+    .notes-panel {
+      border: 2px solid var(--gris-borde);
+      border-radius: 2px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: var(--blanco);
+      min-height: 540px;
+    }
+
+    .notes-heading {
+      text-align: center;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--negro);
+      letter-spacing: 0.24em;
+      margin-bottom: 24px;
+      padding-left: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .note-item {
+      padding-bottom: 14px;
+      border-bottom: 1px dashed #d8e0e6;
+    }
+
+    .note-item:last-child {
+      border-bottom: none;
+    }
+
+    .note-time {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--verde-hoja);
+      margin-bottom: 3px;
+    }
+
+    .note-desc {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--verde-hoja);
+      line-height: 1.38;
+    }
+
+    .note-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-mini {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: var(--negro);
+      cursor: pointer;
+    }
+
+    .btn-mini.danger {
+      color: #991b1b;
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
+    .notes-empty {
+      text-align: center;
+      color: var(--texto-muted);
+      font-size: 0.9rem;
+      margin-top: 32px;
+      line-height: 1.5;
+    }
+
+    /* MODAL / PANEL DE EDICION DIRECTIVA */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 19, 21, 0.58);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--blanco);
+      border-radius: 12px;
+      border-top: 5px solid var(--verde-dts);
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--negro);
+      margin-bottom: 6px;
+    }
+
+    .modal-sub {
+      font-size: 0.84rem;
+      color: var(--texto-muted);
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--negro);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1.5px solid #cfd8e0;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      min-height: 78px;
+      resize: vertical;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-modal {
+      background: var(--verde-dts);
+      color: var(--blanco);
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-secondary-modal {
+      background: #f1f5f9;
+      color: var(--negro);
+      border: 1px solid #cbd5e1;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .feedback-box {
+      font-size: 0.82rem;
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 7px;
+      display: none;
+    }
+
+    .feedback-box.err {
+      display: block;
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    .feedback-box.ok {
+      display: block;
+      background: #eef7ec;
+      color: #1f6812;
+    }
+
+    @media print {
+      body {
+        background: var(--blanco);
+        padding: 0;
+      }
+      .control-bar, .note-actions {
+        display: none !important;
+      }
+      .calendar-sheet {
+        box-shadow: none;
+        padding: 12px;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .calendar-sheet {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+      }
+      .notes-panel {
+        min-height: auto;
+      }
+      .day-cell {
+        min-height: 82px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR DE NAVEGACIÓN Y EDICIÓN DIRECTIVA -->
+  <header class="control-bar">
+    <div class="control-left">
+      <div class="brand-pill">
+        <span class="brand-dot"></span>
+        <span>CALENDARIO SINDICATO DTS</span>
+      </div>
+
+      <div class="nav-month-group">
+        <button type="button" id="prevMonthBtn" class="btn-bar">← Anterior</button>
+        <select id="monthSelector" class="month-select" aria-label="Seleccionar mes"></select>
+        <button type="button" id="nextMonthBtn" class="btn-bar">Siguiente →</button>
+      </div>
+    </div>
+
+    <div class="control-right">
+      <span id="syncStatus" class="status-badge">Conectado a Google Sheets</span>
+      <button type="button" id="refreshSheetBtn" class="btn-bar">Actualizar</button>
+      <button type="button" id="addEventBtn" class="btn-bar green" style="display:none;">+ Agregar fecha / nota</button>
+      <button type="button" id="directivaLoginBtn" class="btn-bar">Acceso Directiva</button>
+      <button type="button" id="printBtn" class="btn-bar">Imprimir / PDF</button>
+      <a href="index.html" class="btn-bar" style="text-decoration:none;">Volver a Intranet</a>
+    </div>
+  </header>
+
+  <!-- LIENZO PRINCIPAL DEL CALENDARIO (MISMO FORMATO VISUAL DEL PDF) -->
+  <main class="calendar-sheet" id="calendarSheet">
+    <section class="cal-main">
+      <div class="cal-header">
+        <div class="month-title-wrap">
+          <h1 id="monthHeading" class="month-title">NOVIEMBRE</h1>
+          <span id="monthScript" class="month-script-overlay">Noviembre</span>
+        </div>
+        <div id="yearHeading" class="year-title">2026</div>
+      </div>
+
+      <div class="weekdays-row">
+        <div class="weekday-label">LUNES</div>
+        <div class="weekday-label">MARTES</div>
+        <div class="weekday-label">MIÉRCOLES</div>
+        <div class="weekday-label">JUEVES</div>
+        <div class="weekday-label">VIERNES</div>
+        <div class="weekday-label">SÁBADO</div>
+        <div class="weekday-label">DOMINGO</div>
+      </div>
+
+      <div id="daysGrid" class="days-grid"></div>
+    </section>
+
+    <aside class="notes-panel">
+      <h2 class="notes-heading">NOTAS</h2>
+      <div id="notesList" class="notes-list"></div>
+    </aside>
+  </main>
+
+  <!-- MODAL ACCESO DIRECTIVA -->
+  <div id="loginModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 class="modal-title">Acceso Edición Directiva</h3>
+      <p class="modal-sub">
+        Ingresa tu RUT autorizado en la pestaña <strong>Socios</strong> (<code>Puede Editar = SI</code>, ej. <strong>20163760-0</strong>) para agregar o editar fechas en el calendario.
+      </p>
+      <form id="dirAuthForm" novalidate>
+        <div class="form-group">
+          <label for="dirRutInput">RUT Directiva (con guion)</label>
+          <input type="text" id="dirRutInput" placeholder="Ej: 20163760-0" required />
+        </div>
+        <div class="form-group">
+          <label for="dirPassInput">Clave (primeros 5 dígitos del RUT o clave actualizada)</label>
+          <input type="password" id="dirPassInput" placeholder="Ej: 20163" required />
+        </div>
+        <div id="dirAuthFeedback" class="feedback-box"></div>
+        <div class="modal-actions">
+          <button type="button" id="closeLoginModalBtn" class="btn-secondary-modal">Cancelar</button>
+          <button type="submit" class="btn-primary-modal">Habilitar edición</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL AGREGAR / EDITAR EVENTO DE CALENDARIO -->
+  <div id="eventModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 id="eventModalTitle" class="modal-title">Agregar Evento al Calendario</h3>
+      <p class="modal-sub">
+        Se mostrará en la celda del día y en el recuadro lateral <strong>NOTAS</strong>, sincronizado con <strong>Calendario_Asambleas</strong>.
+      </p>
+      <form id="eventForm" novalidate>
+        <input type="hidden" id="editEventId" />
+        <div class="form-group">
+          <label for="evFechaInput">Fecha (DD-MM-AAAA)</label>
+          <input type="text" id="evFechaInput" placeholder="Ej: 25-11-2026" required />
+        </div>
+        <div class="form-group">
+          <label for="evHoraInput">Hora (HH:MM)</label>
+          <input type="text" id="evHoraInput" placeholder="Ej: 19:00" required />
+        </div>
+        <div class="form-group">
+          <label for="evTipoInput">Tipo de instancia</label>
+          <select id="evTipoInput">
+            <option value="Asamblea Ordinaria">Asamblea Ordinaria</option>
+            <option value="Asamblea Extraordinaria">Asamblea Extraordinaria</option>
+            <option value="Gestión / Cuentas">Gestión / Cuentas</option>
+            <option value="Cuotas / IPC">Cuotas / IPC</option>
+            <option value="Votación">Votación</option>
+            <option value="Normativa">Normativa</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="evTituloInput">Texto corto en el recuadro del día</label>
+          <input type="text" id="evTituloInput" placeholder="Ej: Asamblea ordinaria" required />
+        </div>
+        <div class="form-group">
+          <label for="evNotaInput">Detalle completo en el panel NOTAS</label>
+          <textarea id="evNotaInput" placeholder="Ej: AO - cierre de proceso de negociación colectiva y próximos pasos" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="evEstadoInput">Estado</label>
+          <select id="evEstadoInput">
+            <option value="PROGRAMADA">PROGRAMADA</option>
+            <option value="REALIZADA">REALIZADA</option>
+            <option value="REPROGRAMADA">REPROGRAMADA</option>
+            <option value="CANCELADA">CANCELADA</option>
+          </select>
+        </div>
+        <div id="eventFeedback" class="feedback-box"></div>
+        <div class="modal-actions">
+          <button type="button" id="closeEventModalBtn" class="btn-secondary-modal">Cerrar</button>
+          <button type="submit" class="btn-primary-modal">Guardar en calendario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // URL opcional de Google Apps Script Web App (/exec) para escritura directa en Google Sheets
+    const WEB_APP_URL = "";
+
+    // URLs CSV públicas de tu Súper Planilla Sindicato DTS
+    const SHEET_URLS = {
+      socios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=893542668&single=true&output=csv",
+      // Pega aquí el enlace CSV público de la pestaña 'Calendario_Asambleas' cuando la publiques en Archivo -> Compartir -> Publicar en la web
+      calendario: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=1711815484&single=true&output=csv"
+    };
+
+    const ADMIN_MASTER_RUT = "20163760-0";
+
+    const MESES_ES = [
+      "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+      "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+    ];
+
+    const MESES_SCRIPT = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    // Eventos base exactos extraídos de tu PDF 2027.pdf (Noviembre 2026 - Diciembre 2027)
+    const EVENTOS_BASE = [
+      {
+        id: "CAL-001",
+        fecha: "25-11-2026",
+        hora: "19:00",
+        tituloCorto: "Asamblea ordinaria",
+        notaDetalle: "AO - cierre de proceso de negociación colectiva y próximos pasos",
+        tipo: "Asamblea Ordinaria",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-002",
+        fecha: "30-11-2026",
+        hora: "19:30",
+        tituloCorto: "Asamblea extraordinaria",
+        notaDetalle: "AE - reforma estatuto, aumento de cuota sindical de $5.000 a $7.000",
+        tipo: "Asamblea Extraordinaria",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-003",
+        fecha: "15-12-2026",
+        hora: "15:00",
+        tituloCorto: "Auditoría de cuentas",
+        notaDetalle: "auditoría de cuentas para realización de balance anual",
+        tipo: "Gestión / Cuentas",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-004",
+        fecha: "22-12-2026",
+        hora: "12:00",
+        tituloCorto: "Reajuste de IPC",
+        notaDetalle: "Reajuste de cuota sindical según aumento de IPC",
+        tipo: "Cuotas / IPC",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-005",
+        fecha: "30-12-2026",
+        hora: "10:00",
+        tituloCorto: "Votación electrónica",
+        notaDetalle: "Votación electrónica por reestructuración del sindicato",
+        tipo: "Votación",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-006",
+        fecha: "01-01-2027",
+        hora: "08:00",
+        tituloCorto: "Comienzo de sanciones",
+        notaDetalle: "comienzo de sanciones por inasistencias injustificadas",
+        tipo: "Normativa",
+        estado: "PROGRAMADA"
+      },
+      {
+        id: "CAL-007",
+        fecha: "06-01-2027",
+        hora: "19:30",
+        tituloCorto: "Asamblea Extraordinaria",
+        notaDetalle: "AEO presentación y votación de planificación financiera 2027",
+        tipo: "Asamblea Extraordinaria",
+        estado: "PROGRAMADA"
+      }
+    ];
+
+    let eventos = [];
+    let sociosAutorizados = new Map();
+    let directivaActiva = null;
+    let vistaYear = 2026;
+    let vistaMonth = 10; // 0-indexed: 10 = Noviembre 2026
+
+    function normalizarRut(valor) {
+      return (valor || "").replace(/\./g, "").replace(/\s+/g, "").toUpperCase().trim();
+    }
+
+    function primerosCinco(rut) {
+      return (rut.split("-")[0] || "").slice(0, 5);
+    }
+
+    function parseFechaDDMMYYYY(str) {
+      const m = /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/.exec((str || "").trim());
+      if (!m) return null;
+      return {
+        day: parseInt(m[1], 10),
+        month: parseInt(m[2], 10) - 1,
+        year: parseInt(m[3], 10)
+      };
+    }
+
+    function formatDDMM(fechaStr) {
+      const p = parseFechaDDMMYYYY(fechaStr);
+      if (!p) return fechaStr;
+      return `${String(p.day).padStart(2, "0")}/${String(p.month + 1).padStart(2, "0")}`;
+    }
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        const next = text[i + 1];
+        if (inQuotes) {
+          if (ch === '"' && next === '"') {
+            field += '"';
+            i++;
+          } else if (ch === '"') {
+            inQuotes = false;
+          } else {
+            field += ch;
+          }
+        } else {
+          if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ",") {
+            row.push(field.trim());
+            field = "";
+          } else if (ch === "
+" && next === "
+") {
+            row.push(field.trim());
+            rows.push(row);
+            row = [];
+            field = "";
+            i++;
+          } else if (ch === "
+" || ch === "
+") {
+            row.push(field.trim());
+            rows.push(row);
+            row = [];
+            field = "";
+          } else {
+            field += ch;
+          }
+        }
+      }
+      if (field.length > 0 || row.length > 0) {
+        row.push(field.trim());
+        rows.push(row);
+      }
+      if (rows.length < 2) return [];
+
+      let headerIdx = 0;
+      const known = new Set(["RUT", "ROL", "PUEDE EDITAR", "ID", "FECHA", "HORA", "TITULOCORTO", "NOTADETALLE", "TIPO", "ESTADO"]);
+      for (let r = 0; r < Math.min(rows.length, 6); r++) {
+        const matches = rows[r].filter((c) => known.has(c.replace(/^﻿/, "").trim().toUpperCase())).length;
+        if (matches >= 2) {
+          headerIdx = r;
+          break;
+        }
+      }
+      const headers = rows[headerIdx].map((h) => h.replace(/^﻿/, "").trim());
+      return rows.slice(headerIdx + 1).filter((r) => r.some((c) => c !== "")).map((r) => {
+        const obj = {};
+        headers.forEach((h, idx) => (obj[h] = (r[idx] || "").trim()));
+        return obj;
+      });
+    }
+
+    async function fetchCSV(url) {
+      if (!url) return [];
+      const res = await fetch(`${url}${url.includes("?") ? "&" : "?"}_t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return parseCSV(await res.text());
+    }
+
+    function guardarLocal() {
+      try {
+        localStorage.setItem("dts_calendario_eventos_v1", JSON.stringify(eventos));
+      } catch (e) {}
+    }
+
+    function cargarLocal() {
+      try {
+        const raw = localStorage.getItem("dts_calendario_eventos_v1");
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function enviarWebApp(action, payload) {
+      if (!WEB_APP_URL) return false;
+      try {
+        await fetch(WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action,
+            actorRut: directivaActiva ? directivaActiva.rut : "",
+            ...payload
+          })
+        });
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    async function sincronizarTodo() {
+      const statusEl = document.getElementById("syncStatus");
+      statusEl.textContent = "Sincronizando con Google Sheets...";
+
+      // 1. Cargar permisos de directiva desde hoja Socios
+      sociosAutorizados.set(ADMIN_MASTER_RUT, {
+        rut: ADMIN_MASTER_RUT,
+        nombre: "KAREN VALESKA GODOY ROCHA",
+        clave: primerosCinco(ADMIN_MASTER_RUT),
+        rol: "DIRECTIVA_ADMIN",
+        puedeEditar: "SI"
+      });
+
+      try {
+        const sociosRows = await fetchCSV(SHEET_URLS.socios);
+        sociosRows.forEach((r) => {
+          const rut = normalizarRut(r["RUT"] || "");
+          if (!rut) return;
+          const rol = (r["Rol"] || "SOCIO").toUpperCase();
+          const puedeEditar = rut === ADMIN_MASTER_RUT ? "SI" : (r["Puede Editar"] || "NO").toUpperCase();
+          if (puedeEditar === "SI" || rol === "DIRECTIVA" || rol === "DIRECTIVA_ADMIN") {
+            sociosAutorizados.set(rut, {
+              rut,
+              nombre: r["Nombre Completo"] || r["Nombre"] || rut,
+              clave: (r["Clave Actual"] || r["Clave Inicial"] || primerosCinco(rut)).trim(),
+              rol,
+              puedeEditar
+            });
+          }
+        });
+      } catch (e) {}
+
+      // 2. Cargar eventos desde hoja Calendario_Asambleas o respaldo local/base
+      const locales = cargarLocal();
+      eventos = locales ? [...locales] : EVENTOS_BASE.map((x) => ({ ...x }));
+
+      if (SHEET_URLS.calendario) {
+        try {
+          const calRows = await fetchCSV(SHEET_URLS.calendario);
+          if (calRows.length > 0) {
+            const desdeSheet = calRows
+              .filter((r) => r["Fecha"] && (r["TituloCorto"] || r["NotaDetalle"]))
+              .map((r, idx) => ({
+                id: r["ID"] || `CAL-${String(idx + 1).padStart(3, "0")}`,
+                fecha: r["Fecha"] || "",
+                hora: r["Hora"] || "",
+                tituloCorto: r["TituloCorto"] || "Actividad sindical",
+                notaDetalle: r["NotaDetalle"] || r["TituloCorto"] || "",
+                tipo: r["Tipo"] || "Asamblea Ordinaria",
+                estado: (r["Estado"] || "PROGRAMADA").toUpperCase()
+              }));
+            if (desdeSheet.length > 0) {
+              eventos = desdeSheet;
+              guardarLocal();
+            }
+          }
+        } catch (e) {}
+      }
+
+      const hora = new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" });
+      statusEl.textContent = SHEET_URLS.calendario
+        ? `Sincronizado con Sheets · ${hora}`
+        : `Calendario activo (${eventos.length} hitos) · ${hora}`;
+
+      verificarSesionDirectiva();
+      renderCalendario();
+    }
+
+    function verificarSesionDirectiva() {
+      const savedRut = normalizarRut(sessionStorage.getItem("dts_socio_rut") || sessionStorage.getItem("dts_cal_dir_rut") || "");
+      if (savedRut && sociosAutorizados.has(savedRut)) {
+        const user = sociosAutorizados.get(savedRut);
+        if (user.puedeEditar === "SI") {
+          directivaActiva = user;
+        }
+      }
+
+      const addBtn = document.getElementById("addEventBtn");
+      const loginBtn = document.getElementById("directivaLoginBtn");
+      if (directivaActiva) {
+        addBtn.style.display = "inline-block";
+        loginBtn.textContent = `Directiva: ${directivaActiva.rut} (Salir)`;
+      } else {
+        addBtn.style.display = "none";
+        loginBtn.textContent = "Acceso Directiva";
+      }
+    }
+
+    function poblarSelectorMeses() {
+      const sel = document.getElementById("monthSelector");
+      const opciones = [];
+      // Desde Noviembre 2026 hasta Diciembre 2027 (igual que 2027.pdf) + todo 2028
+      for (let y = 2026; y <= 2028; y++) {
+        const mStart = y === 2026 ? 10 : 0;
+        for (let m = mStart; m < 12; m++) {
+          opciones.push({ year: y, month: m, label: `${MESES_ES[m]} ${y}` });
+        }
+      }
+      sel.innerHTML = opciones
+        .map((o) => `<option value="${o.year}-${o.month}" ${o.year === vistaYear && o.month === vistaMonth ? "selected" : ""}>${o.label}</option>`)
+        .join("");
+    }
+
+    function renderCalendario() {
+      poblarSelectorMeses();
+      document.getElementById("monthHeading").textContent = MESES_ES[vistaMonth];
+      document.getElementById("monthScript").textContent = MESES_SCRIPT[vistaMonth];
+      document.getElementById("yearHeading").textContent = String(vistaYear);
+
+      const grid = document.getElementById("daysGrid");
+      const notesList = document.getElementById("notesList");
+
+      // Primer día del mes (convertir Domingo=0..Sábado=6 a Lunes=0..Domingo=6)
+      const firstDayRaw = new Date(vistaYear, vistaMonth, 1).getDay();
+      const startOffset = (firstDayRaw + 6) % 7;
+      const daysInMonth = new Date(vistaYear, vistaMonth + 1, 0).getDate();
+      const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+
+      const eventosMes = eventos
+        .filter((ev) => {
+          if ((ev.estado || "").toUpperCase() === "CANCELADA") return false;
+          const p = parseFechaDDMMYYYY(ev.fecha);
+          return p && p.year === vistaYear && p.month === vistaMonth;
+        })
+        .sort((a, b) => {
+          const pa = parseFechaDDMMYYYY(a.fecha);
+          const pb = parseFechaDDMMYYYY(b.fecha);
+          return (pa ? pa.day : 0) - (pb ? pb.day : 0);
+        });
+
+      const porDia = new Map();
+      eventosMes.forEach((ev) => {
+        const p = parseFechaDDMMYYYY(ev.fecha);
+        if (!p) return;
+        if (!porDia.has(p.day)) porDia.set(p.day, []);
+        porDia.get(p.day).push(ev);
+      });
+
+      let cellsHTML = "";
+      for (let idx = 0; idx < totalCells; idx++) {
+        const dayNum = idx - startOffset + 1;
+        if (dayNum < 1 || dayNum > daysInMonth) {
+          cellsHTML += `<div class="day-cell empty"></div>`;
+          continue;
+        }
+        const dayEvents = porDia.get(dayNum) || [];
+        const hasEvent = dayEvents.length > 0;
+        const editClass = directivaActiva ? "editable-cell" : "";
+        const fechaFull = `${String(dayNum).padStart(2, "0")}-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
+
+        cellsHTML += `
+          <div class="day-cell ${hasEvent ? "has-event" : ""} ${editClass}" data-fecha="${fechaFull}">
+            <div class="day-num">${dayNum}</div>
+            <div class="day-events">
+              ${dayEvents
+                .map((ev) => {
+                  const isExtra = (ev.tipo || "").toLowerCase().includes("extra");
+                  return `<div class="day-event-label ${isExtra ? "extra" : ""}">${ev.tituloCorto}</div>`;
+                })
+                .join("")}
+            </div>
+          </div>
+        `;
+      }
+      grid.innerHTML = cellsHTML;
+
+      // Clic en día: si hay directiva activa, abre formulario para agregar o editar ese día
+      grid.querySelectorAll(".day-cell:not(.empty)").forEach((cell) => {
+        cell.addEventListener("click", () => {
+          if (!directivaActiva) return;
+          const fecha = cell.dataset.fecha;
+          const p = parseFechaDDMMYYYY(fecha);
+          const evs = p ? porDia.get(p.day) || [] : [];
+          if (evs.length === 1) {
+            abrirModalEvento(evs[0]);
+          } else {
+            abrirModalEvento(null, fecha);
+          }
+        });
+      });
+
+      // Render panel lateral NOTAS
+      if (eventosMes.length === 0) {
+        notesList.innerHTML = `<div class="notes-empty">Sin actividades ni asambleas registradas para ${MESES_SCRIPT[vistaMonth]} ${vistaYear}.</div>`;
+      } else {
+        notesList.innerHTML = eventosMes
+          .map((ev) => {
+            const ddmm = formatDDMM(ev.fecha);
+            const horaTxt = ev.hora ? ` - ${ev.hora} hrs` : "";
+            return `
+              <div class="note-item">
+                <div class="note-time">${ddmm}${horaTxt}</div>
+                <div class="note-desc">${ev.notaDetalle}</div>
+                ${
+                  directivaActiva
+                    ? `
+                  <div class="note-actions">
+                    <button type="button" class="btn-mini" data-edit-id="${ev.id}">Editar</button>
+                    <button type="button" class="btn-mini danger" data-del-id="${ev.id}">Eliminar</button>
+                  </div>
+                `
+                    : ""
+                }
+              </div>
+            `;
+          })
+          .join("");
+
+        if (directivaActiva) {
+          notesList.querySelectorAll("[data-edit-id]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const found = eventos.find((x) => x.id === btn.dataset.editId);
+              if (found) abrirModalEvento(found);
+            });
+          });
+          notesList.querySelectorAll("[data-del-id]").forEach((btn) => {
+            btn.addEventListener("click", async () => {
+              const id = btn.dataset.delId;
+              eventos = eventos.filter((x) => x.id !== id);
+              guardarLocal();
+              await enviarWebApp("delete_calendar_event", { id });
+              renderCalendario();
+            });
+          });
+        }
+      }
+    }
+
+    function abrirModalEvento(ev = null, fechaPrefill = "") {
+      if (!directivaActiva) return;
+      const modal = document.getElementById("eventModal");
+      const fb = document.getElementById("eventFeedback");
+      fb.className = "feedback-box";
+      fb.textContent = "";
+
+      if (ev) {
+        document.getElementById("eventModalTitle").textContent = `Editar Evento (${ev.id})`;
+        document.getElementById("editEventId").value = ev.id;
+        document.getElementById("evFechaInput").value = ev.fecha;
+        document.getElementById("evHoraInput").value = ev.hora;
+        document.getElementById("evTipoInput").value = ev.tipo || "Asamblea Ordinaria";
+        document.getElementById("evTituloInput").value = ev.tituloCorto;
+        document.getElementById("evNotaInput").value = ev.notaDetalle;
+        document.getElementById("evEstadoInput").value = ev.estado || "PROGRAMADA";
+      } else {
+        document.getElementById("eventModalTitle").textContent = "Agregar Evento al Calendario";
+        document.getElementById("editEventId").value = "";
+        document.getElementById("evFechaInput").value = fechaPrefill || `15-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
+        document.getElementById("evHoraInput").value = "19:00";
+        document.getElementById("evTipoInput").value = "Asamblea Ordinaria";
+        document.getElementById("evTituloInput").value = "";
+        document.getElementById("evNotaInput").value = "";
+        document.getElementById("evEstadoInput").value = "PROGRAMADA";
+      }
+      modal.classList.add("open");
+    }
+
+    // Navegación entre meses
+    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+      vistaMonth--;
+      if (vistaMonth < 0) {
+        vistaMonth = 11;
+        vistaYear--;
+      }
+      renderCalendario();
+    });
+
+    document.getElementById("nextMonthBtn").addEventListener("click", () => {
+      vistaMonth++;
+      if (vistaMonth > 11) {
+        vistaMonth = 0;
+        vistaYear++;
+      }
+      renderCalendario();
+    });
+
+    document.getElementById("monthSelector").addEventListener("change", (e) => {
+      const [y, m] = e.target.value.split("-").map(Number);
+      vistaYear = y;
+      vistaMonth = m;
+      renderCalendario();
+    });
+
+    document.getElementById("refreshSheetBtn").addEventListener("click", () => sincronizarTodo());
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+    document.getElementById("addEventBtn").addEventListener("click", () => abrirModalEvento(null));
+
+    // Autenticación de Directiva
+    document.getElementById("directivaLoginBtn").addEventListener("click", () => {
+      if (directivaActiva) {
+        directivaActiva = null;
+        sessionStorage.removeItem("dts_cal_dir_rut");
+        verificarSesionDirectiva();
+        renderCalendario();
+        return;
+      }
+      document.getElementById("dirAuthFeedback").className = "feedback-box";
+      document.getElementById("loginModal").classList.add("open");
+    });
+
+    document.getElementById("closeLoginModalBtn").addEventListener("click", () => {
+      document.getElementById("loginModal").classList.remove("open");
+    });
+
+    document.getElementById("closeEventModalBtn").addEventListener("click", () => {
+      document.getElementById("eventModal").classList.remove("open");
+    });
+
+    document.getElementById("dirAuthForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fb = document.getElementById("dirAuthFeedback");
+      const rut = normalizarRut(document.getElementById("dirRutInput").value);
+      const pass = document.getElementById("dirPassInput").value.trim();
+
+      if (!sociosAutorizados.has(rut)) {
+        fb.className = "feedback-box err";
+        fb.textContent = "Este RUT no tiene permisos de edición en la planilla Socios.";
+        return;
+      }
+      const user = sociosAutorizados.get(rut);
+      const clavesLocales = JSON.parse(localStorage.getItem("dts_claves_socios") || "{}");
+      const claveValida = clavesLocales[rut] || user.clave || primerosCinco(rut);
+
+      if (pass !== claveValida) {
+        fb.className = "feedback-box err";
+        fb.textContent = "Clave incorrecta.";
+        return;
+      }
+
+      directivaActiva = user;
+      sessionStorage.setItem("dts_cal_dir_rut", rut);
+      document.getElementById("loginModal").classList.remove("open");
+      verificarSesionDirectiva();
+      renderCalendario();
+    });
+
+    document.getElementById("eventForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!directivaActiva) return;
+      const fb = document.getElementById("eventFeedback");
+      const idEdit = document.getElementById("editEventId").value.trim();
+      const fecha = document.getElementById("evFechaInput").value.trim();
+      const hora = document.getElementById("evHoraInput").value.trim();
+      const tipo = document.getElementById("evTipoInput").value;
+      const tituloCorto = document.getElementById("evTituloInput").value.trim();
+      const notaDetalle = document.getElementById("evNotaInput").value.trim();
+      const estado = document.getElementById("evEstadoInput").value;
+
+      const parsed = parseFechaDDMMYYYY(fecha);
+      if (!parsed || !tituloCorto || !notaDetalle) {
+        fb.className = "feedback-box err";
+        fb.textContent = "Verifica el formato de fecha (DD-MM-AAAA), título corto y detalle.";
+        return;
+      }
+
+      const fechaNorm = `${String(parsed.day).padStart(2, "0")}-${String(parsed.month + 1).padStart(2, "0")}-${parsed.year}`;
+
+      if (idEdit) {
+        const idx = eventos.findIndex((x) => x.id === idEdit);
+        if (idx >= 0) {
+          eventos[idx] = { id: idEdit, fecha: fechaNorm, hora, tituloCorto, notaDetalle, tipo, estado };
+          await enviarWebApp("update_calendar_event", eventos[idx]);
+        }
+      } else {
+        const nuevo = {
+          id: `CAL-${String(eventos.length + 1).padStart(3, "0")}`,
+          fecha: fechaNorm,
+          hora,
+          tituloCorto,
+          notaDetalle,
+          tipo,
+          estado
+        };
+        eventos.push(nuevo);
+        await enviarWebApp("add_calendar_event", nuevo);
+      }
+
+      guardarLocal();
+      vistaYear = parsed.year;
+      vistaMonth = parsed.month;
+      document.getElementById("eventModal").classList.remove("open");
+      renderCalendario();
+    });
+
+    (async function init() {
+      await sincronizarTodo();
+    })();
+  </script>
+</body>
+</html>
