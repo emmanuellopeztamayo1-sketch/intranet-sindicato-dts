@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calendario Sindicato DTS — 2026 / 2027</title>
+  <title>Calendario Sindicato DTS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Great+Vibes&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -15,12 +15,9 @@
       --verde-suave: #eef7ec;
       --negro: #111315;
       --gris-borde: #1f2428;
-      --gris-suave: #f5f7f9;
       --texto: #1e2328;
       --texto-muted: #5a646e;
       --blanco: #ffffff;
-      --alerta-bg: #fef3c7;
-      --alerta-txt: #92400e;
     }
 
     * {
@@ -34,36 +31,37 @@
       background: #eef1f4;
       color: var(--texto);
       min-height: 100vh;
-      padding: 18px 16px 48px;
+      padding: 16px 14px 44px;
     }
 
-    /* BARRA DE CONTROL SUPERIOR */
     .control-bar {
       max-width: 1280px;
-      margin: 0 auto 16px;
+      margin: 0 auto 14px;
       background: var(--negro);
       color: var(--blanco);
       border-bottom: 4px solid var(--verde-dts);
       border-radius: 12px;
-      padding: 12px 18px;
+      padding: 11px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .control-left {
+    .control-left,
+    .control-right,
+    .nav-month-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .brand-pill {
       font-weight: 800;
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       letter-spacing: 0.03em;
       display: flex;
       align-items: center;
@@ -78,26 +76,24 @@
       display: inline-block;
     }
 
-    .nav-month-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
     .btn-bar {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
       color: var(--blanco);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       padding: 6px 12px;
       border-radius: 8px;
       font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       transition: background 0.15s;
     }
 
     .btn-bar:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     .btn-bar.green {
@@ -115,37 +111,29 @@
       border: none;
       border-radius: 8px;
       padding: 6px 10px;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
     }
 
-    .control-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
     .status-badge {
       font-size: 0.78rem;
-      color: #cbd5e1;
+      color: #dbeafe;
       padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.09);
       border-radius: 999px;
     }
 
-    /* HOJA DE CALENDARIO ESTILO PDF 2027 */
     .calendar-sheet {
       max-width: 1280px;
       margin: 0 auto;
       background: var(--blanco);
       border-radius: 14px;
-      padding: 34px 36px 38px;
+      padding: 32px 34px 36px;
       box-shadow: 0 10px 30px rgba(17, 19, 21, 0.08);
       display: grid;
-      grid-template-columns: 1fr 290px;
-      gap: 32px;
+      grid-template-columns: 1fr 295px;
+      gap: 30px;
       align-items: stretch;
     }
 
@@ -158,7 +146,7 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       gap: 16px;
       flex-wrap: wrap;
     }
@@ -171,7 +159,7 @@
 
     .month-title {
       font-family: "Archivo Black", "Open Sans", sans-serif;
-      font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+      font-size: clamp(2rem, 4vw, 3.5rem);
       font-weight: 900;
       color: var(--negro);
       letter-spacing: 0.04em;
@@ -181,34 +169,32 @@
 
     .month-script-overlay {
       font-family: "Great Vibes", cursive;
-      font-size: clamp(2rem, 3.6vw, 3.1rem);
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
       color: var(--verde-hoja);
-      margin-left: -12px;
+      margin-left: -10px;
       margin-top: -10px;
       pointer-events: none;
       user-select: none;
-      opacity: 0.92;
     }
 
     .year-title {
       font-family: "Archivo Black", "Open Sans", sans-serif;
-      font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+      font-size: clamp(2rem, 4vw, 3.5rem);
       font-weight: 900;
       color: var(--negro);
       letter-spacing: 0.03em;
       line-height: 1;
     }
 
-    /* GRILLA 7 COLUMNAS */
     .weekdays-row {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       text-align: center;
     }
 
     .weekday-label {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--negro);
       letter-spacing: 0.06em;
@@ -257,6 +243,19 @@
       background: #f0f7f1;
     }
 
+    .day-cell.is-today {
+      outline: 2.5px solid var(--verde-dts);
+      outline-offset: -2.5px;
+      background: #eef8ec;
+    }
+
+    .day-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
     .day-num {
       font-size: 0.94rem;
       font-weight: 600;
@@ -269,6 +268,17 @@
       color: var(--verde-oscuro);
     }
 
+    .today-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: var(--verde-dts);
+      color: var(--blanco);
+      padding: 1px 6px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
     .day-events {
       display: flex;
       flex-direction: column;
@@ -277,7 +287,7 @@
     }
 
     .day-event-label {
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       font-weight: 700;
       color: var(--verde-hoja);
       line-height: 1.22;
@@ -288,11 +298,6 @@
       color: #1f6812;
     }
 
-    .day-event-label.otros {
-      color: #2b5b33;
-    }
-
-    /* PANEL LATERAL NOTAS (ESTILO RECTANGULO PDF) */
     .notes-panel {
       border: 2px solid var(--gris-borde);
       border-radius: 2px;
@@ -318,7 +323,7 @@
     .notes-list {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
     }
 
     .note-item {
@@ -331,7 +336,7 @@
     }
 
     .note-time {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       font-weight: 800;
       color: var(--verde-hoja);
       margin-bottom: 3px;
@@ -375,7 +380,6 @@
       line-height: 1.5;
     }
 
-    /* MODAL / PANEL DE EDICION DIRECTIVA */
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -484,12 +488,6 @@
       color: #991b1b;
     }
 
-    .feedback-box.ok {
-      display: block;
-      background: #eef7ec;
-      color: #1f6812;
-    }
-
     @media print {
       body {
         background: var(--blanco);
@@ -508,7 +506,7 @@
     @media (max-width: 960px) {
       .calendar-sheet {
         grid-template-columns: 1fr;
-        padding: 22px 18px;
+        padding: 20px 16px;
       }
       .notes-panel {
         min-height: auto;
@@ -521,32 +519,31 @@
 </head>
 <body>
 
-  <!-- BARRA SUPERIOR DE NAVEGACIÓN Y EDICIÓN DIRECTIVA -->
   <header class="control-bar">
     <div class="control-left">
       <div class="brand-pill">
         <span class="brand-dot"></span>
-        <span>CALENDARIO SINDICATO DTS</span>
+        <span>SINDICATO DTS</span>
       </div>
 
       <div class="nav-month-group">
         <button type="button" id="prevMonthBtn" class="btn-bar">← Anterior</button>
-        <select id="monthSelector" class="month-select" aria-label="Seleccionar mes"></select>
+        <select id="monthSelector" class="month-select" aria-label="Seleccionar mes y año"></select>
         <button type="button" id="nextMonthBtn" class="btn-bar">Siguiente →</button>
+        <button type="button" id="todayBtn" class="btn-bar">Hoy</button>
       </div>
     </div>
 
     <div class="control-right">
-      <span id="syncStatus" class="status-badge">Conectado a Google Sheets</span>
+      <span id="syncStatus" class="status-badge">Cargando calendario...</span>
       <button type="button" id="refreshSheetBtn" class="btn-bar">Actualizar</button>
       <button type="button" id="addEventBtn" class="btn-bar green" style="display:none;">+ Agregar fecha / nota</button>
       <button type="button" id="directivaLoginBtn" class="btn-bar">Acceso Directiva</button>
       <button type="button" id="printBtn" class="btn-bar">Imprimir / PDF</button>
-      <a href="index.html" class="btn-bar" style="text-decoration:none;">Volver a Intranet</a>
+      <a href="index.html" class="btn-bar">Volver a Intranet</a>
     </div>
   </header>
 
-  <!-- LIENZO PRINCIPAL DEL CALENDARIO (MISMO FORMATO VISUAL DEL PDF) -->
   <main class="calendar-sheet" id="calendarSheet">
     <section class="cal-main">
       <div class="cal-header">
@@ -581,7 +578,7 @@
     <div class="modal-card">
       <h3 class="modal-title">Acceso Edición Directiva</h3>
       <p class="modal-sub">
-        Ingresa tu RUT autorizado en la pestaña <strong>Socios</strong> (<code>Puede Editar = SI</code>, ej. <strong>20163760-0</strong>) para agregar o editar fechas en el calendario.
+        Ingresa tu RUT autorizado (ej. <strong>20163760-0</strong>) para agregar o editar fechas en el calendario.
       </p>
       <form id="dirAuthForm" novalidate>
         <div class="form-group">
@@ -601,12 +598,12 @@
     </div>
   </div>
 
-  <!-- MODAL AGREGAR / EDITAR EVENTO DE CALENDARIO -->
+  <!-- MODAL AGREGAR / EDITAR EVENTO -->
   <div id="eventModal" class="modal-backdrop">
     <div class="modal-card">
       <h3 id="eventModalTitle" class="modal-title">Agregar Evento al Calendario</h3>
       <p class="modal-sub">
-        Se mostrará en la celda del día y en el recuadro lateral <strong>NOTAS</strong>, sincronizado con <strong>Calendario_Asambleas</strong>.
+        Se muestra en la celda del día y en el panel lateral <strong>NOTAS</strong>.
       </p>
       <form id="eventForm" novalidate>
         <input type="hidden" id="editEventId" />
@@ -657,17 +654,13 @@
   </div>
 
   <script>
-    // URL opcional de Google Apps Script Web App (/exec) para escritura directa en Google Sheets
     const WEB_APP_URL = "";
+    const ADMIN_MASTER_RUT = "20163760-0";
 
-    // URLs CSV públicas de tu Súper Planilla Sindicato DTS
     const SHEET_URLS = {
       socios: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=893542668&single=true&output=csv",
-      // Pega aquí el enlace CSV público de la pestaña 'Calendario_Asambleas' cuando la publiques en Archivo -> Compartir -> Publicar en la web
       calendario: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcCdZmGXgBWEF00iP4aGsDWaoiz31I-siAKFvvEkmvj7aqWa9LScjtR9hjQCC0yJ5JHWa_tR4HwBoD/pub?gid=1711815484&single=true&output=csv"
     };
-
-    const ADMIN_MASTER_RUT = "20163760-0";
 
     const MESES_ES = [
       "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
@@ -679,7 +672,6 @@
       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    // Eventos base exactos extraídos de tu PDF 2027.pdf (Noviembre 2026 - Diciembre 2027)
     const EVENTOS_BASE = [
       {
         id: "CAL-001",
@@ -746,11 +738,16 @@
       }
     ];
 
-    let eventos = [];
+    const ahoraReal = new Date();
+    const HOY_YEAR = ahoraReal.getFullYear();
+    const HOY_MONTH = ahoraReal.getMonth();
+    const HOY_DAY = ahoraReal.getDate();
+
+    let eventos = EVENTOS_BASE.map((x) => ({ ...x }));
     let sociosAutorizados = new Map();
     let directivaActiva = null;
-    let vistaYear = 2026;
-    let vistaMonth = 10; // 0-indexed: 10 = Noviembre 2026
+    let vistaYear = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_YEAR : 2026;
+    let vistaMonth = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_MONTH : 10;
 
     function normalizarRut(valor) {
       return (valor || "").replace(/\./g, "").replace(/\s+/g, "").toUpperCase().trim();
@@ -852,13 +849,13 @@
 
     function guardarLocal() {
       try {
-        localStorage.setItem("dts_calendario_eventos_v1", JSON.stringify(eventos));
+        localStorage.setItem("dts_calendario_eventos_v2", JSON.stringify(eventos));
       } catch (e) {}
     }
 
     function cargarLocal() {
       try {
-        const raw = localStorage.getItem("dts_calendario_eventos_v1");
+        const raw = localStorage.getItem("dts_calendario_eventos_v2");
         if (!raw) return null;
         const parsed = JSON.parse(raw);
         return Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
@@ -886,99 +883,10 @@
       }
     }
 
-    async function sincronizarTodo() {
-      const statusEl = document.getElementById("syncStatus");
-      statusEl.textContent = "Sincronizando con Google Sheets...";
-
-      // 1. Cargar permisos de directiva desde hoja Socios
-      sociosAutorizados.set(ADMIN_MASTER_RUT, {
-        rut: ADMIN_MASTER_RUT,
-        nombre: "KAREN VALESKA GODOY ROCHA",
-        clave: primerosCinco(ADMIN_MASTER_RUT),
-        rol: "DIRECTIVA_ADMIN",
-        puedeEditar: "SI"
-      });
-
-      try {
-        const sociosRows = await fetchCSV(SHEET_URLS.socios);
-        sociosRows.forEach((r) => {
-          const rut = normalizarRut(r["RUT"] || "");
-          if (!rut) return;
-          const rol = (r["Rol"] || "SOCIO").toUpperCase();
-          const puedeEditar = rut === ADMIN_MASTER_RUT ? "SI" : (r["Puede Editar"] || "NO").toUpperCase();
-          if (puedeEditar === "SI" || rol === "DIRECTIVA" || rol === "DIRECTIVA_ADMIN") {
-            sociosAutorizados.set(rut, {
-              rut,
-              nombre: r["Nombre Completo"] || r["Nombre"] || rut,
-              clave: (r["Clave Actual"] || r["Clave Inicial"] || primerosCinco(rut)).trim(),
-              rol,
-              puedeEditar
-            });
-          }
-        });
-      } catch (e) {}
-
-      // 2. Cargar eventos desde hoja Calendario_Asambleas o respaldo local/base
-      const locales = cargarLocal();
-      eventos = locales ? [...locales] : EVENTOS_BASE.map((x) => ({ ...x }));
-
-      if (SHEET_URLS.calendario) {
-        try {
-          const calRows = await fetchCSV(SHEET_URLS.calendario);
-          if (calRows.length > 0) {
-            const desdeSheet = calRows
-              .filter((r) => r["Fecha"] && (r["TituloCorto"] || r["NotaDetalle"]))
-              .map((r, idx) => ({
-                id: r["ID"] || `CAL-${String(idx + 1).padStart(3, "0")}`,
-                fecha: r["Fecha"] || "",
-                hora: r["Hora"] || "",
-                tituloCorto: r["TituloCorto"] || "Actividad sindical",
-                notaDetalle: r["NotaDetalle"] || r["TituloCorto"] || "",
-                tipo: r["Tipo"] || "Asamblea Ordinaria",
-                estado: (r["Estado"] || "PROGRAMADA").toUpperCase()
-              }));
-            if (desdeSheet.length > 0) {
-              eventos = desdeSheet;
-              guardarLocal();
-            }
-          }
-        } catch (e) {}
-      }
-
-      const hora = new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" });
-      statusEl.textContent = SHEET_URLS.calendario
-        ? `Sincronizado con Sheets · ${hora}`
-        : `Calendario activo (${eventos.length} hitos) · ${hora}`;
-
-      verificarSesionDirectiva();
-      renderCalendario();
-    }
-
-    function verificarSesionDirectiva() {
-      const savedRut = normalizarRut(sessionStorage.getItem("dts_socio_rut") || sessionStorage.getItem("dts_cal_dir_rut") || "");
-      if (savedRut && sociosAutorizados.has(savedRut)) {
-        const user = sociosAutorizados.get(savedRut);
-        if (user.puedeEditar === "SI") {
-          directivaActiva = user;
-        }
-      }
-
-      const addBtn = document.getElementById("addEventBtn");
-      const loginBtn = document.getElementById("directivaLoginBtn");
-      if (directivaActiva) {
-        addBtn.style.display = "inline-block";
-        loginBtn.textContent = `Directiva: ${directivaActiva.rut} (Salir)`;
-      } else {
-        addBtn.style.display = "none";
-        loginBtn.textContent = "Acceso Directiva";
-      }
-    }
-
     function poblarSelectorMeses() {
       const sel = document.getElementById("monthSelector");
       const opciones = [];
-      // Desde Noviembre 2026 hasta Diciembre 2027 (igual que 2027.pdf) + todo 2028
-      for (let y = 2026; y <= 2028; y++) {
+      for (let y = 2026; y <= 2030; y++) {
         const mStart = y === 2026 ? 10 : 0;
         for (let m = mStart; m < 12; m++) {
           opciones.push({ year: y, month: m, label: `${MESES_ES[m]} ${y}` });
@@ -998,7 +906,6 @@
       const grid = document.getElementById("daysGrid");
       const notesList = document.getElementById("notesList");
 
-      // Primer día del mes (convertir Domingo=0..Sábado=6 a Lunes=0..Domingo=6)
       const firstDayRaw = new Date(vistaYear, vistaMonth, 1).getDay();
       const startOffset = (firstDayRaw + 6) % 7;
       const daysInMonth = new Date(vistaYear, vistaMonth + 1, 0).getDate();
@@ -1033,12 +940,16 @@
         }
         const dayEvents = porDia.get(dayNum) || [];
         const hasEvent = dayEvents.length > 0;
+        const isToday = vistaYear === HOY_YEAR && vistaMonth === HOY_MONTH && dayNum === HOY_DAY;
         const editClass = directivaActiva ? "editable-cell" : "";
         const fechaFull = `${String(dayNum).padStart(2, "0")}-${String(vistaMonth + 1).padStart(2, "0")}-${vistaYear}`;
 
         cellsHTML += `
-          <div class="day-cell ${hasEvent ? "has-event" : ""} ${editClass}" data-fecha="${fechaFull}">
-            <div class="day-num">${dayNum}</div>
+          <div class="day-cell ${hasEvent ? "has-event" : ""} ${isToday ? "is-today" : ""} ${editClass}" data-fecha="${fechaFull}">
+            <div class="day-top-row">
+              <span class="day-num">${dayNum}</span>
+              ${isToday ? `<span class="today-tag">Hoy</span>` : ""}
+            </div>
             <div class="day-events">
               ${dayEvents
                 .map((ev) => {
@@ -1052,7 +963,6 @@
       }
       grid.innerHTML = cellsHTML;
 
-      // Clic en día: si hay directiva activa, abre formulario para agregar o editar ese día
       grid.querySelectorAll(".day-cell:not(.empty)").forEach((cell) => {
         cell.addEventListener("click", () => {
           if (!directivaActiva) return;
@@ -1067,7 +977,6 @@
         });
       });
 
-      // Render panel lateral NOTAS
       if (eventosMes.length === 0) {
         notesList.innerHTML = `<div class="notes-empty">Sin actividades ni asambleas registradas para ${MESES_SCRIPT[vistaMonth]} ${vistaYear}.</div>`;
       } else {
@@ -1114,6 +1023,100 @@
       }
     }
 
+    function verificarSesionDirectiva() {
+      const savedRut = normalizarRut(sessionStorage.getItem("dts_socio_rut") || sessionStorage.getItem("dts_cal_dir_rut") || "");
+      if (savedRut && sociosAutorizados.has(savedRut)) {
+        const user = sociosAutorizados.get(savedRut);
+        if (user.puedeEditar === "SI") {
+          directivaActiva = user;
+        }
+      }
+
+      const addBtn = document.getElementById("addEventBtn");
+      const loginBtn = document.getElementById("directivaLoginBtn");
+      if (directivaActiva) {
+        addBtn.style.display = "inline-flex";
+        loginBtn.textContent = `Directiva: ${directivaActiva.rut} (Salir)`;
+      } else {
+        addBtn.style.display = "none";
+        loginBtn.textContent = "Acceso Directiva";
+      }
+    }
+
+    async function sincronizarTodo() {
+      const statusEl = document.getElementById("syncStatus");
+      statusEl.textContent = "Sincronizando con Google Sheets...";
+
+      sociosAutorizados.set(ADMIN_MASTER_RUT, {
+        rut: ADMIN_MASTER_RUT,
+        nombre: "KAREN VALESKA GODOY ROCHA",
+        clave: primerosCinco(ADMIN_MASTER_RUT),
+        rol: "DIRECTIVA_ADMIN",
+        puedeEditar: "SI"
+      });
+
+      const locales = cargarLocal();
+      if (locales) {
+        eventos = [...locales];
+      }
+
+      // Render inmediato para que nunca aparezca vacío
+      verificarSesionDirectiva();
+      renderCalendario();
+
+      try {
+        const sociosRows = await fetchCSV(SHEET_URLS.socios);
+        sociosRows.forEach((r) => {
+          const rut = normalizarRut(r["RUT"] || "");
+          if (!rut) return;
+          const rol = (r["Rol"] || "SOCIO").toUpperCase();
+          const puedeEditar = rut === ADMIN_MASTER_RUT ? "SI" : (r["Puede Editar"] || "NO").toUpperCase();
+          if (puedeEditar === "SI" || rol === "DIRECTIVA" || rol === "DIRECTIVA_ADMIN") {
+            sociosAutorizados.set(rut, {
+              rut,
+              nombre: r["Nombre Completo"] || r["Nombre"] || rut,
+              clave: (r["Clave Actual"] || r["Clave Inicial"] || primerosCinco(rut)).trim(),
+              rol,
+              puedeEditar
+            });
+          }
+        });
+      } catch (e) {}
+
+      let synced = false;
+      if (SHEET_URLS.calendario) {
+        try {
+          const calRows = await fetchCSV(SHEET_URLS.calendario);
+          if (calRows.length > 0) {
+            const desdeSheet = calRows
+              .filter((r) => r["Fecha"] && (r["TituloCorto"] || r["NotaDetalle"]))
+              .map((r, idx) => ({
+                id: r["ID"] || `CAL-${String(idx + 1).padStart(3, "0")}`,
+                fecha: r["Fecha"] || "",
+                hora: r["Hora"] || "",
+                tituloCorto: r["TituloCorto"] || "Actividad sindical",
+                notaDetalle: r["NotaDetalle"] || r["TituloCorto"] || "",
+                tipo: r["Tipo"] || "Asamblea Ordinaria",
+                estado: (r["Estado"] || "PROGRAMADA").toUpperCase()
+              }));
+            if (desdeSheet.length > 0) {
+              eventos = desdeSheet;
+              guardarLocal();
+              synced = true;
+            }
+          }
+        } catch (e) {}
+      }
+
+      const hora = new Date().toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" });
+      statusEl.textContent = synced
+        ? `Sincronizado con Sheets · ${hora}`
+        : `Calendario activo (${eventos.length} hitos) · ${hora}`;
+
+      verificarSesionDirectiva();
+      renderCalendario();
+    }
+
     function abrirModalEvento(ev = null, fechaPrefill = "") {
       if (!directivaActiva) return;
       const modal = document.getElementById("eventModal");
@@ -1143,7 +1146,6 @@
       modal.classList.add("open");
     }
 
-    // Navegación entre meses
     document.getElementById("prevMonthBtn").addEventListener("click", () => {
       vistaMonth--;
       if (vistaMonth < 0) {
@@ -1162,6 +1164,12 @@
       renderCalendario();
     });
 
+    document.getElementById("todayBtn").addEventListener("click", () => {
+      vistaYear = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_YEAR : 2026;
+      vistaMonth = HOY_YEAR >= 2026 && HOY_YEAR <= 2030 ? HOY_MONTH : 10;
+      renderCalendario();
+    });
+
     document.getElementById("monthSelector").addEventListener("change", (e) => {
       const [y, m] = e.target.value.split("-").map(Number);
       vistaYear = y;
@@ -1173,7 +1181,6 @@
     document.getElementById("printBtn").addEventListener("click", () => window.print());
     document.getElementById("addEventBtn").addEventListener("click", () => abrirModalEvento(null));
 
-    // Autenticación de Directiva
     document.getElementById("directivaLoginBtn").addEventListener("click", () => {
       if (directivaActiva) {
         directivaActiva = null;
