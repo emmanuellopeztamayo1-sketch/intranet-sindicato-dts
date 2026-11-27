@@ -828,7 +828,7 @@
         <div class="topbar-user">
           <span id="socioBadge" class="rut-badge">Socio</span>
           <span id="rolePill" class="role-pill" style="display:none;">DIRECTIVA</span>
-          <button id="refreshBtn" type="button" class="btn-secondary">Actualizar datos</button>
+          <a href="calendario.html" class="btn-secondary" style="text-decoration:none; display:inline-flex; align-items:center;">Calendario sindicato</a>
           <button id="logoutBtn" type="button" class="btn-logout">Cerrar sesión</button>
         </div>
       </div>
@@ -1977,9 +1977,6 @@
       document.getElementById("loginScreen").style.display = "flex";
     });
 
-    document.getElementById("refreshBtn").addEventListener("click", () => {
-      cargarContenidoPortal();
-    });
 
     document.getElementById("goToPerfilBtn").addEventListener("click", () => {
       activarPestana("perfil");
